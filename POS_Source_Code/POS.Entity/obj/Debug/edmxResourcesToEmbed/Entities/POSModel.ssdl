@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="POSEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LocationDesc" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+    <Property Name="POBox" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="CostCenter" Type="nvarchar" MaxLength="20" />
+    <Property Name="BusinessArea" Type="nvarchar" MaxLength="20" />
+    <Property Name="FieldArea" Type="nvarchar" MaxLength="20" />
+    <Property Name="CashLoan" Type="numeric" Precision="18" Scale="5" />
+    <Property Name="CustInt1" Type="int" />
+    <Property Name="CustInt2" Type="int" />
+    <Property Name="CustInt3" Type="int" />
+    <Property Name="CustText1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText3" Type="nvarchar" MaxLength="50" />
+    <Property Name="TfrDisplay" Type="nvarchar" MaxLength="50" />
+    <Property Name="POReceive" Type="nvarchar" MaxLength="50" />
+    <Property Name="TfrIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="TfrOut" Type="nvarchar" MaxLength="50" />
+    <Property Name="RtnVendor" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhyCount" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_tbl_Location">
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+    <End Role="tbl_Location1" Type="Self.tbl_Location" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tbl_Location1">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="POSEntityModelStoreContainer">
+    <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Location" Association="Self.FK_tbl_Location">
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+      <End Role="tbl_Location1" EntitySet="tbl_Location" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

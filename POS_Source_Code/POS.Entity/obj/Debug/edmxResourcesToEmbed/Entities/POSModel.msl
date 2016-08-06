@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="POSEntityModelStoreContainer" CdmEntityContainer="POSEntities">
+    <EntitySetMapping Name="tbl_Location">
+      <EntityTypeMapping TypeName="POSEntityModel.tbl_Location">
+        <MappingFragment StoreEntitySet="tbl_Location">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+          <ScalarProperty Name="BusinessArea" ColumnName="BusinessArea" />
+          <ScalarProperty Name="FieldArea" ColumnName="FieldArea" />
+          <ScalarProperty Name="CashLoan" ColumnName="CashLoan" />
+          <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
+          <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
+          <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
+          <ScalarProperty Name="CustText1" ColumnName="CustText1" />
+          <ScalarProperty Name="CustText2" ColumnName="CustText2" />
+          <ScalarProperty Name="CustText3" ColumnName="CustText3" />
+          <ScalarProperty Name="TfrDisplay" ColumnName="TfrDisplay" />
+          <ScalarProperty Name="POReceive" ColumnName="POReceive" />
+          <ScalarProperty Name="TfrIn" ColumnName="TfrIn" />
+          <ScalarProperty Name="TfrOut" ColumnName="TfrOut" />
+          <ScalarProperty Name="RtnVendor" ColumnName="RtnVendor" />
+          <ScalarProperty Name="PhyCount" ColumnName="PhyCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

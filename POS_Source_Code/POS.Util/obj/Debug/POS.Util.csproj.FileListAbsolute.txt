@@ -1,0 +1,4 @@
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Util\bin\Debug\POS.Util.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Util\bin\Debug\POS.Util.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Util\obj\Debug\POS.Util.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Util\obj\Debug\POS.Util.pdb

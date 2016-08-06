@@ -1,0 +1,14 @@
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Entity\bin\Debug\POS.Entity.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Entity\bin\Debug\POS.Entity.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Entity\obj\Debug\POS.Entity.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Entity\obj\Debug\POS.Entity.pdb
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\POS.Entity.dll
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\POS.Entity.pdb
+D:\MyWork\pos\POS\POS.Entity\obj\Debug\POS.Entity.csprojResolveAssemblyReference.cache
+D:\MyWork\pos\POS\POS.Entity\obj\Debug\POS.Entity.dll
+D:\MyWork\pos\POS\POS.Entity\obj\Debug\POS.Entity.pdb
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\POS.Entity.dll.config
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\EntityFramework.dll
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\EntityFramework.xml
+D:\MyWork\pos\POS\POS.Entity\bin\Debug\EntityFramework.SqlServer.xml

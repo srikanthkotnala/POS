@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="POSEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LocationDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+          <Property Name="POBox" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="20" />
+          <Property Name="BusinessArea" Type="nvarchar" MaxLength="20" />
+          <Property Name="FieldArea" Type="nvarchar" MaxLength="20" />
+          <Property Name="CashLoan" Type="numeric" Precision="18" Scale="5" />
+          <Property Name="CustInt1" Type="int" />
+          <Property Name="CustInt2" Type="int" />
+          <Property Name="CustInt3" Type="int" />
+          <Property Name="CustText1" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustText2" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustText3" Type="nvarchar" MaxLength="50" />
+          <Property Name="TfrDisplay" Type="nvarchar" MaxLength="50" />
+          <Property Name="POReceive" Type="nvarchar" MaxLength="50" />
+          <Property Name="TfrIn" Type="nvarchar" MaxLength="50" />
+          <Property Name="TfrOut" Type="nvarchar" MaxLength="50" />
+          <Property Name="RtnVendor" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhyCount" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_Location">
+          <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+          <End Role="tbl_Location1" Type="Self.tbl_Location" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="tbl_Location1">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POSEntityModelStoreContainer">
+          <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Location" Association="Self.FK_tbl_Location">
+            <End Role="tbl_Location" EntitySet="tbl_Location" />
+            <End Role="tbl_Location1" EntitySet="tbl_Location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POSEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocationDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POBox" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CostCenter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FieldArea" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CashLoan" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="CustInt1" Type="Int32" />
+          <Property Name="CustInt2" Type="Int32" />
+          <Property Name="CustInt3" Type="Int32" />
+          <Property Name="CustText1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustText2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustText3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TfrDisplay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POReceive" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TfrIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TfrOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RtnVendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhyCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Location1" Relationship="Self.FK_tbl_Location" FromRole="tbl_Location" ToRole="tbl_Location1" />
+          <NavigationProperty Name="tbl_Location2" Relationship="Self.FK_tbl_Location" FromRole="tbl_Location1" ToRole="tbl_Location" />
+        </EntityType>
+        <Association Name="FK_tbl_Location">
+          <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+          <End Role="tbl_Location1" Type="Self.tbl_Location" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="tbl_Location1">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="POSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" />
+          <AssociationSet Name="FK_tbl_Location" Association="Self.FK_tbl_Location">
+            <End Role="tbl_Location" EntitySet="tbl_Location" />
+            <End Role="tbl_Location1" EntitySet="tbl_Location" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POSEntityModelStoreContainer" CdmEntityContainer="POSEntities">
+          <EntitySetMapping Name="tbl_Location">
+            <EntityTypeMapping TypeName="POSEntityModel.tbl_Location">
+              <MappingFragment StoreEntitySet="tbl_Location">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="POBox" ColumnName="POBox" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="BusinessArea" ColumnName="BusinessArea" />
+                <ScalarProperty Name="FieldArea" ColumnName="FieldArea" />
+                <ScalarProperty Name="CashLoan" ColumnName="CashLoan" />
+                <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
+                <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
+                <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
+                <ScalarProperty Name="CustText1" ColumnName="CustText1" />
+                <ScalarProperty Name="CustText2" ColumnName="CustText2" />
+                <ScalarProperty Name="CustText3" ColumnName="CustText3" />
+                <ScalarProperty Name="TfrDisplay" ColumnName="TfrDisplay" />
+                <ScalarProperty Name="POReceive" ColumnName="POReceive" />
+                <ScalarProperty Name="TfrIn" ColumnName="TfrIn" />
+                <ScalarProperty Name="TfrOut" ColumnName="TfrOut" />
+                <ScalarProperty Name="RtnVendor" ColumnName="RtnVendor" />
+                <ScalarProperty Name="PhyCount" ColumnName="PhyCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,18 @@
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\bin\Debug\POS.Repository.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\bin\Debug\POS.Repository.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\obj\Debug\POS.Repository.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\obj\Debug\POS.Repository.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\bin\Debug\POS.Entity.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\bin\Debug\POS.Entity.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Repository\obj\Debug\POS.Repository.csprojResolveAssemblyReference.cache
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\POS.Repository.dll
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\POS.Repository.pdb
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\POS.Entity.dll
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\POS.Entity.pdb
+D:\MyWork\pos\POS\POS.Repository\obj\Debug\POS.Repository.csprojResolveAssemblyReference.cache
+D:\MyWork\pos\POS\POS.Repository\obj\Debug\POS.Repository.dll
+D:\MyWork\pos\POS\POS.Repository\obj\Debug\POS.Repository.pdb
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\EntityFramework.dll
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\EntityFramework.xml
+D:\MyWork\pos\POS\POS.Repository\bin\Debug\EntityFramework.SqlServer.xml

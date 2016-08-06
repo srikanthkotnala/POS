@@ -1,0 +1,22 @@
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Business.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Business.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\obj\Debug\POS.Business.csprojResolveAssemblyReference.cache
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\obj\Debug\POS.Business.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\obj\Debug\POS.Business.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Repository.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Repository.pdb
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Util.dll
+\\prodfclfs01\users2$\kotnala_srikanth\my documents\visual studio 2015\Projects\POS\POS.Business\bin\Debug\POS.Util.pdb
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Business.dll
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Business.pdb
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Repository.dll
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Util.dll
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Repository.pdb
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Util.pdb
+D:\MyWork\pos\POS\POS.Business\obj\Debug\POS.Business.csprojResolveAssemblyReference.cache
+D:\MyWork\pos\POS\POS.Business\obj\Debug\POS.Business.dll
+D:\MyWork\pos\POS\POS.Business\obj\Debug\POS.Business.pdb
+D:\MyWork\pos\POS\POS.Business\bin\Debug\EntityFramework.dll
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Entity.dll
+D:\MyWork\pos\POS\POS.Business\bin\Debug\EntityFramework.xml
+D:\MyWork\pos\POS\POS.Business\bin\Debug\POS.Entity.pdb
