@@ -184,6 +184,8 @@ namespace POS.Repository
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        ///
     }
 
 }

@@ -39,6 +39,7 @@ namespace POS.Repository.UnitOfWork
             }
         }
 
+
         #endregion
 
         /// <summary>
@@ -50,10 +51,10 @@ namespace POS.Repository.UnitOfWork
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //public List<testSP_Result> SelecttestSP(int id)
-        //{
-        //    return testEntity.pxSELECTtestSP(id).ToList();
-        //}
+        public List<Proc_GetMasterCategory_Result> GetMasterCategory(string CategoryID)
+        {
+            return pOSEntities.Proc_GetMasterCategory(CategoryID).ToList();
+        }
 
 
 

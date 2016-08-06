@@ -34,7 +34,7 @@ namespace POS.Business.BusinessComponents
             List<tbl_Location> Locations;
             try
             {
-                Locations = Context.Location.Get().ToList();
+                Locations = Context.Location.Get(e=>e.City == "Jeddah").ToList();
                 return Locations;
             }
             catch (Exception ex)
