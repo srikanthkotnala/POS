@@ -12,6 +12,8 @@ namespace POS.Entity.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class POSEntities : DbContext
     {
@@ -25,6 +27,33 @@ namespace POS.Entity.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_Company> tbl_Company { get; set; }
+        public virtual DbSet<tbl_Country> tbl_Country { get; set; }
         public virtual DbSet<tbl_Location> tbl_Location { get; set; }
+        public virtual DbSet<tbl_Material> tbl_Material { get; set; }
+        public virtual DbSet<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
+    
+        public virtual ObjectResult<Proc_GetMasterCategory_Result> Proc_GetMasterCategory(string categoryID)
+        {
+            var categoryIDParameter = categoryID != null ?
+                new ObjectParameter("CategoryID", categoryID) :
+                new ObjectParameter("CategoryID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterCategory_Result>("Proc_GetMasterCategory", categoryIDParameter);
+        }
+    
+        public virtual ObjectResult<Proc_GetMasterMaterial_Result> Proc_GetMasterMaterial(string materialId)
+        {
+            var materialIdParameter = materialId != null ?
+                new ObjectParameter("MaterialId", materialId) :
+                new ObjectParameter("MaterialId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterMaterial_Result>("Proc_GetMasterMaterial", materialIdParameter);
+        }
+    
+        public virtual ObjectResult<Proc_LoadMasterLocation_Result> Proc_LoadMasterLocation()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterLocation_Result>("Proc_LoadMasterLocation");
+        }
     }
 }
