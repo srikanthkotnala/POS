@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="POSEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_Company">
     <Key>
       <PropertyRef Name="CompanyID" />
@@ -100,6 +107,28 @@
     <Property Name="BaseUOM" Type="nvarchar" MaxLength="10" />
     <Property Name="MaterialMix" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <EntityType Name="tbl_Storage">
+    <Key>
+      <PropertyRef Name="StorageID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="StorageID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="StorageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StorageType" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="1" />
+    <End Role="tbl_City1" Type="Self.tbl_City" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_City1">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Company">
     <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
     <End Role="tbl_Company1" Type="Self.tbl_Company" Multiplicity="0..1" />
@@ -112,6 +141,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Company_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Company">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Location">
     <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
     <End Role="tbl_Location1" Type="Self.tbl_Location" Multiplicity="0..1" />
@@ -121,6 +162,18 @@
       </Principal>
       <Dependent Role="tbl_Location1">
         <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Location_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Location">
+        <PropertyRef Name="City" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -160,6 +213,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Storage_tbl_Location">
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+    <End Role="tbl_Storage" Type="Self.tbl_Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tbl_Storage">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="Proc_GetMasterCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="nvarchar" Mode="In" />
   </Function>
@@ -168,18 +233,32 @@
   </Function>
   <Function Name="Proc_LoadMasterLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="POSEntityModelStoreContainer">
+    <EntitySet Name="tbl_City" EntityType="Self.tbl_City" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Material" EntityType="Self.tbl_Material" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_MaterialEAN" EntityType="Self.tbl_MaterialEAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Storage" EntityType="Self.tbl_Storage" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_City" Association="Self.FK_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_City1" EntitySet="tbl_City" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Company" Association="Self.FK_tbl_Company">
       <End Role="tbl_Company" EntitySet="tbl_Company" />
       <End Role="tbl_Company1" EntitySet="tbl_Company" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_Company_tbl_City" Association="Self.FK_tbl_Company_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Company" EntitySet="tbl_Company" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Location" Association="Self.FK_tbl_Location">
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Location1" EntitySet="tbl_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Location_tbl_City" Association="Self.FK_tbl_Location_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_Material" Association="Self.FK_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
@@ -192,6 +271,10 @@
     <AssociationSet Name="FK_tbl_MaterialEAN_tbl_Material" Association="Self.FK_tbl_MaterialEAN_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Storage_tbl_Location" Association="Self.FK_tbl_Storage_tbl_Location">
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+      <End Role="tbl_Storage" EntitySet="tbl_Storage" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -11,9 +11,19 @@ namespace POS.Entity.Entities
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class tbl_Location
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_Location()
+        {
+            this.tbl_Storage = new HashSet<tbl_Storage>();
+        }
+    
+        [Key]
+        [Required(ErrorMessage ="* Please Enter Location ID")]
         public string LocationID { get; set; }
         public string LocationDesc { get; set; }
         public string Address1 { get; set; }
@@ -24,6 +34,7 @@ namespace POS.Entity.Entities
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
+        [Required(ErrorMessage ="* Please Select City Name")]
         public string City { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }
@@ -46,5 +57,8 @@ namespace POS.Entity.Entities
     
         public virtual tbl_Location tbl_Location1 { get; set; }
         public virtual tbl_Location tbl_Location2 { get; set; }
+        public virtual tbl_City tbl_City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Storage> tbl_Storage { get; set; }
     }
 }

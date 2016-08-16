@@ -22,6 +22,7 @@ namespace POS.Repository.UnitOfWork
         ///Unit of work for POS database tables.
         /// </summary>
         #region Data Model Repository Properties
+
         private GenericRepository<tbl_Location> location;
         /// <summary>
         /// tbl_Location table property as Location
@@ -43,7 +44,27 @@ namespace POS.Repository.UnitOfWork
             
         }
 
-       
+        /// <summary>
+        /// tbl_Storage table property as Storage
+        /// </summary>
+        private GenericRepository<tbl_Storage> storage;
+
+        public GenericRepository<tbl_Storage> Storage
+        {
+            get {
+                if(this.storage==null)
+                {
+                    this.storage = new GenericRepository<tbl_Storage>(EntityConstant.POS);
+                }
+                return storage;
+            }
+            set {
+                this.storage = new GenericRepository<tbl_Storage>(EntityConstant.POS);
+            }
+        }
+
+
+
         #endregion
 
         /// <summary>

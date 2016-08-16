@@ -50,7 +50,13 @@ namespace POS.Web
                         //"~/Scripts/mailform/jquery.rd-mailform.min.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/device.min.js",
-                        "~/Scripts/tm-scripts.js"
+                        "~/Scripts/tm-scripts.js",
+                        "~/Scripts/jquery-1.10.2.min.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js",
+                        "~/Scripts/jsLocation.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js"
 
 
                         ));

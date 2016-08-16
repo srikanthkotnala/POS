@@ -32,6 +32,8 @@ namespace POS.Entity.Entities
         public virtual DbSet<tbl_Location> tbl_Location { get; set; }
         public virtual DbSet<tbl_Material> tbl_Material { get; set; }
         public virtual DbSet<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
+        public virtual DbSet<tbl_City> tbl_City { get; set; }
+        public virtual DbSet<tbl_Storage> tbl_Storage { get; set; }
     
         public virtual ObjectResult<Proc_GetMasterCategory_Result> Proc_GetMasterCategory(string categoryID)
         {

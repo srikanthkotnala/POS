@@ -91,6 +91,16 @@ namespace POS.Repository
         }
 
         /// <summary>
+        /// Get data by Param[]  -Vinod Kumar
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public virtual TEntity GetByParam(object id,object StringName)
+        {
+            return dbSet.Find(id,StringName);
+        }
+
+        /// <summary>
         /// Insert Row
         /// </summary>
         /// <param name="entity"></param>

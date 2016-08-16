@@ -15,6 +15,12 @@
         <AssociationConnector Association="POSEntityModel.FK_tbl_Material" ManuallyRouted="false" />
         <AssociationConnector Association="POSEntityModel.FK_tbl_MaterialEAN_tbl_Material" ManuallyRouted="false" />
         <AssociationConnector Association="POSEntityModel.FK_tbl_MaterialEAN" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="POSEntityModel.tbl_City" Width="1.5" PointX="7.75" PointY="4.25" />
+        <AssociationConnector Association="POSEntityModel.FK_tbl_City" />
+        <AssociationConnector Association="POSEntityModel.FK_tbl_Company_tbl_City" />
+        <AssociationConnector Association="POSEntityModel.FK_tbl_Location_tbl_City" />
+        <EntityTypeShape EntityType="POSEntityModel.tbl_Storage" Width="1.5" PointX="8" PointY="7.5" />
+        <AssociationConnector Association="POSEntityModel.FK_tbl_Storage_tbl_Location" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

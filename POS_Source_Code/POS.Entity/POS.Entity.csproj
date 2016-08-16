@@ -74,6 +74,9 @@
     <Compile Include="Entities\Proc_LoadMasterLocation_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\tbl_City.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\tbl_Company.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\tbl_MaterialEAN.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Storage.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
