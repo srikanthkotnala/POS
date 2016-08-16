@@ -50,5 +50,10 @@ namespace POS.Entity.Entities
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterMaterial_Result>("Proc_GetMasterMaterial", materialIdParameter);
         }
+    
+        public virtual ObjectResult<Proc_LoadMasterLocation_Result> Proc_LoadMasterLocation()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterLocation_Result>("Proc_LoadMasterLocation");
+        }
     }
 }

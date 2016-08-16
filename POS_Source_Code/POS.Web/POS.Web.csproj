@@ -17,7 +17,7 @@
     <AssemblyName>POS.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -272,10 +273,13 @@
     <Content Include="Scripts\jquery.touchSwipe.min.js" />
     <Content Include="Scripts\jquery.ui.accordion.min.js" />
     <Content Include="Scripts\jquery.ui.totop.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsLocation.js" />
     <Content Include="Scripts\modal.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
@@ -293,7 +297,9 @@
     <Content Include="Scripts\transition.js" />
     <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -328,6 +334,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Location\Partial\_LocationDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +356,10 @@
     <ProjectReference Include="..\POS.Business\POS.Business.csproj">
       <Project>{fa36d0c7-aa6f-449d-bf9f-bb14f118ae7d}</Project>
       <Name>POS.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\POS.Entity\POS.Entity.csproj">
+      <Project>{ee935fbe-f10a-46ed-853d-48173beda900}</Project>
+      <Name>POS.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\POS.Util\POS.Util.csproj">
       <Project>{1fdc311e-b122-4c66-91e3-5653a6c26f75}</Project>
@@ -372,7 +384,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1709</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1709/</IISUrl>
+          <IISUrl>http://localhost/POS.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

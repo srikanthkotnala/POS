@@ -202,6 +202,7 @@
     <FunctionImport Name="Proc_GetMasterMaterial" ReturnType="Collection(POSEntityModel.Proc_GetMasterMaterial_Result)">
       <Parameter Name="MaterialId" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Proc_LoadMasterLocation" ReturnType="Collection(POSEntityModel.Proc_LoadMasterLocation_Result)" />
   </EntityContainer>
   <ComplexType Name="Proc_GetMasterCategory_Result">
     <Property Type="String" Name="CategoryID" Nullable="false" MaxLength="20" />
@@ -234,5 +235,36 @@
     <Property Type="String" Name="Name1" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="SubCategoryDesc" Nullable="true" MaxLength="60" />
     <Property Type="String" Name="CategoryDesc" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadMasterLocation_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address3" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="POBox" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Contact" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fax" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Region" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="BusinessArea" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FieldArea" Nullable="true" MaxLength="20" />
+    <Property Type="Decimal" Name="CashLoan" Nullable="true" Precision="18" Scale="5" />
+    <Property Type="Int32" Name="CustInt1" Nullable="true" />
+    <Property Type="Int32" Name="CustInt2" Nullable="true" />
+    <Property Type="Int32" Name="CustInt3" Nullable="true" />
+    <Property Type="String" Name="CustText1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CustText2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CustText3" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TfrDisplay" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="POReceive" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TfrIn" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TfrOut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RtnVendor" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhyCount" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -71,6 +71,9 @@
     <Compile Include="Entities\Proc_GetMasterMaterial_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Proc_LoadMasterLocation_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\tbl_Company.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>

@@ -171,6 +171,7 @@
         <Function Name="Proc_GetMasterMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaterialId" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Proc_LoadMasterLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="POSEntityModelStoreContainer">
           <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" Schema="dbo" store:Type="Tables" />
@@ -399,10 +400,12 @@
             <End Role="tbl_MaterialEAN1" EntitySet="tbl_MaterialEAN" />
           </AssociationSet>
           <FunctionImport Name="Proc_GetMasterCategory" ReturnType="Collection(POSEntityModel.Proc_GetMasterCategory_Result)">
-            <Parameter Name="CategoryID" Mode="In" Type="String" />
+          <Parameter Name="CategoryID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Proc_GetMasterMaterial" ReturnType="Collection(POSEntityModel.Proc_GetMasterMaterial_Result)">
-            <Parameter Name="MaterialId" Mode="In" Type="String" />
+          <Parameter Name="MaterialId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_LoadMasterLocation" ReturnType="Collection(POSEntityModel.Proc_LoadMasterLocation_Result)">
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Proc_GetMasterCategory_Result">
@@ -436,6 +439,37 @@
           <Property Type="String" Name="Name1" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="SubCategoryDesc" Nullable="true" MaxLength="60" />
           <Property Type="String" Name="CategoryDesc" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_LoadMasterLocation_Result">
+          <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="POBox" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Contact" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Region" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CostCenter" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BusinessArea" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="FieldArea" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="CashLoan" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Int32" Name="CustInt1" Nullable="true" />
+          <Property Type="Int32" Name="CustInt2" Nullable="true" />
+          <Property Type="Int32" Name="CustInt3" Nullable="true" />
+          <Property Type="String" Name="CustText1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustText2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CustText3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TfrDisplay" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="POReceive" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TfrIn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TfrOut" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RtnVendor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PhyCount" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -585,6 +619,41 @@
                 <ScalarProperty Name="Name1" ColumnName="Name1" />
                 <ScalarProperty Name="SubCategoryDesc" ColumnName="SubCategoryDesc" />
                 <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_LoadMasterLocation" FunctionName="POSEntityModel.Store.Proc_LoadMasterLocation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POSEntityModel.Proc_LoadMasterLocation_Result">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="POBox" ColumnName="POBox" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
+                <ScalarProperty Name="BusinessArea" ColumnName="BusinessArea" />
+                <ScalarProperty Name="FieldArea" ColumnName="FieldArea" />
+                <ScalarProperty Name="CashLoan" ColumnName="CashLoan" />
+                <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
+                <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
+                <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
+                <ScalarProperty Name="CustText1" ColumnName="CustText1" />
+                <ScalarProperty Name="CustText2" ColumnName="CustText2" />
+                <ScalarProperty Name="CustText3" ColumnName="CustText3" />
+                <ScalarProperty Name="TfrDisplay" ColumnName="TfrDisplay" />
+                <ScalarProperty Name="POReceive" ColumnName="POReceive" />
+                <ScalarProperty Name="TfrIn" ColumnName="TfrIn" />
+                <ScalarProperty Name="TfrOut" ColumnName="TfrOut" />
+                <ScalarProperty Name="RtnVendor" ColumnName="RtnVendor" />
+                <ScalarProperty Name="PhyCount" ColumnName="PhyCount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

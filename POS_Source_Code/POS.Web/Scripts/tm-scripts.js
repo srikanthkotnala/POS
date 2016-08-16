@@ -9,11 +9,11 @@ function isIE() {
 
 /* cookie.JS
  ========================================================*/
-include('js/jquery.cookie.js');
+include('Scripts/jquery.cookie.js');
 
 /* Easing library
  ========================================================*/
-include('js/jquery.easing.1.3.js');
+include('Scripts/jquery.easing.1.3.js');
 
 
 /* Stick up menus
@@ -22,7 +22,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop')) {
-        include('js/tmstickup.js');
+        include('Scripts/tmstickup.js');
 
         $(document).ready(function () {
             $('#stuck_container').TMStickUp({})
@@ -36,7 +36,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop')) {
-        include('js/jquery.ui.totop.js');
+        include('Scripts/jquery.ui.totop.js');
 
         $(document).ready(function () {
             $().UItoTop({
@@ -53,7 +53,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('[data-equal-group]');
     if (o.length > 0) {
-        include('js/jquery.equalheights.js');
+        include('Scripts/jquery.equalheights.js');
     }
 })(jQuery);
 
@@ -75,7 +75,7 @@ include('js/jquery.easing.1.3.js');
 ;
 (function ($) {
     function include(url) {
-	document.write('<script src="js/' + url + '"></script>');
+        document.write('<script src="Scripts/' + url + '"></script>');
 	return false;
 }
 	include('superfish.js');
@@ -91,7 +91,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('.resp-tabs');
     if (o.length > 0) {
-        include('js/jquery.responsive.tabs.js');
+        include('Scripts/jquery.responsive.tabs.js');
 
         $(document).ready(function () {
             o.easyResponsiveTabs();
@@ -105,7 +105,7 @@ include('js/jquery.easing.1.3.js');
  ========================================================*/
 ;
 (function ($) {
-    include('js/jquery.rd-navbar.js');
+    include('Scripts/jquery.rd-navbar.js');
 })(jQuery);
 
 
@@ -117,7 +117,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('.accordion');
     if (o.length > 0) {
-        include('js/jquery.ui.accordion.min.js');
+        include('Scripts/jquery.ui.accordion.min.js');
 
         $(document).ready(function () {
             o.accordion({
@@ -140,7 +140,7 @@ include('js/jquery.easing.1.3.js');
     var o = document.getElementById("google-map");
     if (o) {
         include('//maps.google.com/maps/api/js?sensor=false');
-        include('js/jquery.rd-google-map.js');
+        include('Scripts/jquery.rd-google-map.js');
 
         $(document).ready(function () {
             var o = $('#google-map');
@@ -157,7 +157,7 @@ include('js/jquery.easing.1.3.js');
 ;(function ($) {
     var o = $('.owl-carousel');
     if (o.length > 0) {
-        include('js/owl.carousel.min.js');
+        include('Scripts/owl.carousel.min.js');
         $(document).ready(function () {
             o.owlCarousel({
                 margin: 30,
@@ -186,7 +186,7 @@ include('js/jquery.easing.1.3.js');
 
     if ((navigator.userAgent.toLowerCase().indexOf('msie') == -1 ) || (isIE() && isIE() > 9)) {
         if (o.hasClass('desktop')) {
-            include('js/wow.js');
+            include('Scripts/wow.js');
 
             $(document).ready(function () {
                 new WOW().init();
@@ -251,10 +251,10 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 var o = $('#camera');
     if (o.length > 0) {
         if (!(isIE() && (isIE() > 9))) {
-            include('js/jquery.mobile.customized.min.js');
+            include('Scripts/jquery.mobile.customized.min.js');
         }
 
-        include('js/camera.js');
+        include('Scripts/camera.js');
 
         $(document).ready(function () {
             o.camera({
@@ -281,7 +281,7 @@ var o = $('#camera');
 (function ($) {
     var o = $('.search-form');
     if (o.length > 0) {
-        include('js/TMSearch.js');
+        include('Scripts/TMSearch.js');
     }
 })(jQuery);  
 
@@ -292,8 +292,8 @@ var o = $('#camera');
 /* Mailform
 =============================================*/
 ;(function ($) {
-    include('js/mailform/jquery.form.min.js');
-    include('js/mailform/jquery.rd-mailform.min.js');
+    include('Scripts/mailform/jquery.form.min.js');
+    include('Scripts/mailform/jquery.rd-mailform.min.js');
 })(jQuery); 
 
 
@@ -308,9 +308,9 @@ var o = $('#camera');
 ;(function ($) {
     var o = $('.thumb');
     if (o.length > 0) {
-        include('js/jquery.fancybox.js');
-        include('js/jquery.fancybox-media.js');
-        include('js/jquery.fancybox-buttons.js');
+        include('Scripts/jquery.fancybox.js');
+        include('Scripts/jquery.fancybox-media.js');
+        include('Scripts/jquery.fancybox-buttons.js');
         $(document).ready(function () {
             o.fancybox();
         });
@@ -320,7 +320,7 @@ var o = $('#camera');
 /* Parallax
 =============================================*/
 ;(function ($) {
-    include('js/jquery.rd-parallax.js');
+    include('Scripts/jquery.rd-parallax.js');
 })(jQuery); 
 
 

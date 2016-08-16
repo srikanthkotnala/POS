@@ -217,6 +217,7 @@ C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.We
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Newtonsoft.Json.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Owin.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Business.dll
+C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Entity.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Util.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\System.Web.Helpers.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\System.Web.Mvc.dll
@@ -226,9 +227,9 @@ C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\System.Web.W
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\System.Web.WebPages.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\System.Web.WebPages.Razor.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\WebGrease.dll
-C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Entity.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Repository.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Business.pdb
+C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Entity.pdb
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Util.pdb
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -259,7 +260,6 @@ C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.Ow
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Entity.pdb
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Repository.pdb
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\obj\Debug\POS.Web.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\obj\Debug\POS.Web.dll

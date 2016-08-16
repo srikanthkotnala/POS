@@ -30,13 +30,17 @@ namespace POS.Repository.UnitOfWork
         {
             get
             {
-
                 if (this.location == null)
                 {
                     this.location = new GenericRepository<tbl_Location>(EntityConstant.POS);
                 }
                 return location;
             }
+            set
+            {
+                this.location = new GenericRepository<tbl_Location>(EntityConstant.POS);
+            }
+            
         }
 
        
@@ -56,7 +60,16 @@ namespace POS.Repository.UnitOfWork
             return pOSEntities.Proc_GetMasterCategory(CategoryID).ToList();
         }
 
-
+      
+        /// <summary>
+        /// Get all location details
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Proc_LoadMasterLocation_Result> GetAllLocation()
+        {
+            return pOSEntities.Proc_LoadMasterLocation().ToList();
+        }
 
         #endregion
     }
