@@ -224,6 +224,10 @@
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Storage" EntitySet="tbl_Storage" />
     </AssociationSet>
+    <FunctionImport Name="Proc_LoadGetStorage" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage_Result)" />
+    <FunctionImport Name="Proc_LoadGetStorage1" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage1_Result)" />
+    <FunctionImport Name="Proc_LoadGetStorage2" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage2_Result)" />
+    <FunctionImport Name="Proc_LoadGetLocationStorage" ReturnType="Collection(POSEntityModel.Proc_LoadGetLocationStorage_Result)" />
   </EntityContainer>
   <ComplexType Name="Proc_GetMasterCategory_Result">
     <Property Type="String" Name="CategoryID" Nullable="false" MaxLength="20" />
@@ -358,4 +362,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <ComplexType Name="Proc_LoadGetStorage_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationID1" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadGetStorage1_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadGetStorage2_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadGetLocationStorage_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

@@ -340,6 +340,7 @@
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Location\Partial\_LocationDetailsPartial.cshtml" />
     <Content Include="Views\Storage\Index.cshtml" />
+    <Content Include="Views\Storage\Partial\_StorageDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

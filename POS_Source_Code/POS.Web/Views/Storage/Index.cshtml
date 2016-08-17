@@ -1,4 +1,8 @@
-﻿
+﻿@using POS.Entity.Entities
+@using POS.Util.Model
+@model  IEnumerable<LocationStorageModel>
+
+@*View for Storage list. Created by Vinod *@
 @{
     ViewBag.Title = "Storage";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
@@ -12,7 +16,28 @@
         <div class="input-group col-lg-12 ">
             <input id="txtLocationSearch" type="text" class="form-control col-lg-12 stre_maxWth font_med ht40" placeholder="Search for  Store / Location / LocationID">
         </div>
-        <div class="ovrflow">
+        <div class="ovrflow_Stng">
+            @if (Model != null)
+            {
+                foreach (LocationStorageModel location in Model)
+                {
+                    <div class="locData pad_1per">
+                        <a class="pointer MasterStore" data-LocationID="@location.StorageLocation" data-City="@location.StorageLocation"><h3 class="bg_blue">@location.StorageLocation</h3></a>
+                    </div>
+                }
+                <small id="NoRecords" class="lead" style="display:none">
+                    No records found.
+                </small>
+            }
+            else
+            {
+                <small class="lead">
+                    No records found.
+                </small>
+            }
         </div>
     </div>
+    @*<div id="StorageDetails" class="col-lg-8 noPadBrd">
+        @Html.Partial("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", new LocationStorageModel());
+    </div>*@
 </div>

@@ -11,8 +11,6 @@ namespace POS.Entity.Entities
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tbl_Location
     {
@@ -22,8 +20,6 @@ namespace POS.Entity.Entities
             this.tbl_Storage = new HashSet<tbl_Storage>();
         }
     
-        [Key]
-        [Required(ErrorMessage ="* Please Enter Location ID")]
         public string LocationID { get; set; }
         public string LocationDesc { get; set; }
         public string Address1 { get; set; }
@@ -34,7 +30,6 @@ namespace POS.Entity.Entities
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
-        [Required(ErrorMessage ="* Please Select City Name")]
         public string City { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }

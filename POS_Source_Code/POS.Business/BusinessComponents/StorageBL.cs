@@ -7,6 +7,7 @@ using POS.Entity.Entities;
 using POS.Business.Interface;
 using POS.Repository.UnitOfWork;
 using POS.Repository;
+using POS.Util.Model;
 
 namespace POS.Business.BusinessComponents
 {
@@ -14,7 +15,7 @@ namespace POS.Business.BusinessComponents
     /// <summary>
     /// Business Logic for Storage
     /// </summary>
-  public  class StorageBL : IStorage
+    public class StorageBL : IStorage
     {
         Context Context;
         /// <summary>
@@ -50,6 +51,29 @@ namespace POS.Business.BusinessComponents
             }
 
         }
+        /// <summary>
+        /// Get All Location 
+        /// </summary>
+        /// <returns></returns>
+        public List<tbl_Location> GetAllLocation()
+        {
+            List<tbl_Location> location;
+            try
+            {
+                location = Context.Location.Get().ToList();
+                return location;
+            }
+            catch (Exception ex)
+            {
+                //POS Log Exception to db table
+
+                return null;
+            }
+            finally
+            {
+                location = null;
+            }
+        }
 
         /// <summary>
         /// Get one storage by Storage ID and LocationID
@@ -57,12 +81,12 @@ namespace POS.Business.BusinessComponents
         /// <param name="storageid"></param>
         /// <param name="locationid"></param>
         /// <returns></returns>
-        public tbl_Storage GetByID(string storageid,string locationid)
+        public tbl_Storage GetByID(string locationid)
         {
             tbl_Storage storage;
             try
             {
-                storage = Context.Storage.GetByParam(storageid, locationid);
+                storage = Context.Storage.GetByID(locationid);
                 return storage;
             }
             catch (Exception ex)
@@ -91,7 +115,7 @@ namespace POS.Business.BusinessComponents
             {
                 Context.Storage.Insert(storage);
                 Context.Storage.Save();
-                return storage.LocationID +","+storage.StorageID + " Inserted Successfully!!";
+                return storage.LocationID + "," + storage.StorageID + " Inserted Successfully!!";
             }
             catch (Exception ex)
             {
@@ -118,7 +142,7 @@ namespace POS.Business.BusinessComponents
             {
                 Context.Storage.Update(storage);
                 Context.Storage.Save();
-                return storage.StorageID +","+storage.LocationID + " Updated Successfully!!";
+                return storage.StorageID + "," + storage.LocationID + " Updated Successfully!!";
             }
             catch (Exception ex)
             {
@@ -195,7 +219,7 @@ namespace POS.Business.BusinessComponents
         /// <returns></returns>
         public string InsertOrUpdate(tbl_Storage storage)
         {
-            tbl_Storage CurrentStorage = this.GetByID(storage.StorageID,storage.LocationID);
+            tbl_Storage CurrentStorage = this.GetByID(storage.LocationID);
             string result = string.Empty;
             if (CurrentStorage == null)
             {
@@ -206,5 +230,28 @@ namespace POS.Business.BusinessComponents
                 return result = this.Update(storage);
             }
         }
+        /// <summary>
+        /// Get Storage
+        /// </summary>
+        /// <returns></returns>
+        public List<Proc_LoadGetLocationStorage_Result> GetStorage()
+        {
+            List<Proc_LoadGetLocationStorage_Result> LoadGetStorage;
+            try
+            {
+                LoadGetStorage = Context.GetAllStorage().ToList();
+                return LoadGetStorage;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+
+            }
+        }
+
+      
     }
 }

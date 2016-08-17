@@ -15,7 +15,7 @@ namespace POS.Business.Interface
     {
         List<tbl_Storage> GetAll();
 
-        tbl_Storage GetByID(string storageid,string locationid);
+        tbl_Storage GetByID(string locationid);
 
         string Insert(tbl_Storage storage);
 

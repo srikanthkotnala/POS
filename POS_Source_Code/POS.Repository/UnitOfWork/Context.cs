@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using POS.Entity.Entities;
 using POS.Repository;
+using POS.Util.Model;
 
 namespace POS.Repository.UnitOfWork
 {
@@ -63,6 +64,27 @@ namespace POS.Repository.UnitOfWork
             }
         }
 
+        /// <summary>
+        /// Location Storage property Model as LocationStorageModel
+        /// </summary>
+        private GenericRepository<LocationStorageModel> locationstorage;
+
+        public GenericRepository<LocationStorageModel> LocationStorage
+        {
+            get
+            {
+                if (this.locationstorage == null)
+                {
+                    this.locationstorage = new GenericRepository<LocationStorageModel>(EntityConstant.POS);
+                }
+                return locationstorage;
+            }
+            set {
+                this.locationstorage = new GenericRepository<LocationStorageModel>(EntityConstant.POS);
+                }
+        }
+
+
 
 
         #endregion
@@ -91,6 +113,17 @@ namespace POS.Repository.UnitOfWork
         {
             return pOSEntities.Proc_LoadMasterLocation().ToList();
         }
+
+        /// <summary>
+        /// Get All Storage and location Inner Join
+        /// </summary>
+        /// <returns></returns>
+        public List<Proc_LoadGetLocationStorage_Result> GetAllStorage()
+        {
+            return pOSEntities.Proc_LoadGetLocationStorage().ToList();
+        }
+
+        
 
         #endregion
     }

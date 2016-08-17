@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using POS.Business.BusinessComponents;
 using POS.Entity.Entities;
 using POS.Util.Model;
+
 namespace POS.Web.Controllers
 {
     ///Created by Vinod on 16/08/2016
@@ -23,9 +24,18 @@ namespace POS.Web.Controllers
         // GET: Storage
         public ActionResult Index()
         {
-            LocationStorageContext LSC = new LocationStorageContext();
-            
-            return View();
+            List <Proc_LoadGetLocationStorage_Result> locationStorage= StorageBL.GetStorage().ToList();
+            return View(locationStorage);
+        }
+
+        public PartialViewResult GetStorageByID(string locationID)
+        {
+            tbl_Storage storage = StorageBL.GetByID(locationID);
+            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", storage);
+        }
+        public string InsertOrUpdateStorage(tbl_Storage storage)
+        {
+            return StorageBL.InsertOrUpdate(storage);
         }
     }
 }

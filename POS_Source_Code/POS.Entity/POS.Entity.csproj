@@ -71,6 +71,18 @@
     <Compile Include="Entities\Proc_GetMasterMaterial_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Proc_LoadGetLocationStorage_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Proc_LoadGetStorage1_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Proc_LoadGetStorage2_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Proc_LoadGetStorage_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Proc_LoadMasterLocation_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>

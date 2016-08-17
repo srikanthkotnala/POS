@@ -57,5 +57,25 @@ namespace POS.Entity.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterLocation_Result>("Proc_LoadMasterLocation");
         }
+    
+        public virtual ObjectResult<Proc_LoadGetStorage_Result> Proc_LoadGetStorage()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage_Result>("Proc_LoadGetStorage");
+        }
+    
+        public virtual ObjectResult<Proc_LoadGetStorage1_Result> Proc_LoadGetStorage1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage1_Result>("Proc_LoadGetStorage1");
+        }
+    
+        public virtual ObjectResult<Proc_LoadGetStorage2_Result> Proc_LoadGetStorage2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage2_Result>("Proc_LoadGetStorage2");
+        }
+    
+        public virtual ObjectResult<Proc_LoadGetLocationStorage_Result> Proc_LoadGetLocationStorage()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetLocationStorage_Result>("Proc_LoadGetLocationStorage");
+        }
     }
 }
