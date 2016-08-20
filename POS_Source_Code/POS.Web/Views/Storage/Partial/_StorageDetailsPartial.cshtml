@@ -1,6 +1,6 @@
 ﻿@using POS.Entity.Entities;
 @using POS.Util.Model;
-@model IEnumerable<LocationStorageModel>
+@model LocationStorageModel
 
 @*Partial view for location details. Created by Vinod.*@
 @using (Ajax.BeginForm("InsertOrUpdateStorage", "Storage", new AjaxOptions
@@ -13,9 +13,9 @@
     <div class="col-lg-12">
         <div class="col-lg-12 pad_2per">
             <div class="col-lg-12 pad_1perdiv">
-                <div class="col-lg-12"><div class="col-lg-3"><h5>Location ID :</h5></div><div class="col-lg-6">@Html.TextBox("drpLocation")</div></div>
-                <div class="col-lg-12"><div class="col-lg-3"><h5>Storage ID :</h5></div><div class="col-lg-6">@Html.TextBox("drpStorage")</div></div>
-                <div class="col-lg-12"><div class="col-lg-3"><h5>Location Name :</h5></div><div class="col-lg-6">@Html.TextBox("txtLocationName")</div></div>
+                <div class="col-lg-12"><div class="col-lg-3"><h5>Location ID :</h5></div><div class="col-lg-6">@Html.TextBoxFor(e=>e.LocationID) </div></div>
+                <div class="col-lg-12"><div class="col-lg-3"><h5>Storage ID :</h5></div><div class="col-lg-6">@Html.DropDownListFor(e=>e.Storages.FirstOrDefault().StorageID,new List<SelectListItem>() { new SelectListItem { Text="S",Value="D" },new SelectListItem {Text="D",Value="D"}},"Select Storage ID",new { @class= "dropdown" })</div></div>
+                <div class="col-lg-12"><div class="col-lg-3"><h5>Location Name :</h5></div><div class="col-lg-6">@Html.TextBoxFor(e=>e.LocationDesc)</div></div>
             </div>
             <div class="col-lg-12">
                 <div class="col-lg-3"><h5></h5></div>
@@ -30,23 +30,22 @@
 <div class="col-lg-12">
     <div class="col-lg-12">
         <div class="col-lg-3 stng_Hdr">LocationID</div>
-        <div class="col-lg-3 stng_Hdr">Location Name</div>
         <div class="col-lg-3 stng_Hdr">Storage ID</div>
         <div class="col-lg-3 stng_Hdr">Storage Name</div>
     </div>
 </div>
 <div class="col-lg-12">
     <div class="ovrflow">
-        @if (Model != null)
+      
+        @if (Model.Storages != null)
             {
-                foreach (LocationStorageModel storage in Model.StorageLocation)
+                foreach (tbl_Storage storage in Model.Storages)
                 {
 
                 <div class="col-lg-12 stng_text">
-                    <div class="col-lg-2 stng_text">@storage.StorageLocation.</div>
-                    <div class="col-lg-5 stng_text">@storage.StorageLocation</div>
-                    <div class="col-lg-1 stng_text">@storage.StorageLocation.StorageID</div>
-                    <div class="col-lg-3 stng_text">@storage.StorageLocation.StorageName</div>
+                    <div class="col-lg-3 stng_text">@storage.LocationID</div>
+                    <div class="col-lg-3 stng_text">@storage.StorageID</div>
+                    <div class="col-lg-3 stng_text">@storage.StorageName</div>
                 </div>
             }
             <small id="NoRecords" class="lead" style="display:none">

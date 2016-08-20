@@ -8,6 +8,7 @@ using POS.Business.Interface;
 using POS.Repository.UnitOfWork;
 using POS.Repository;
 using POS.Util.Model;
+using POS.Util.Enum;
 
 namespace POS.Business.BusinessComponents
 {
@@ -51,6 +52,7 @@ namespace POS.Business.BusinessComponents
             }
 
         }
+
         /// <summary>
         /// Get All Location 
         /// </summary>
@@ -81,12 +83,12 @@ namespace POS.Business.BusinessComponents
         /// <param name="storageid"></param>
         /// <param name="locationid"></param>
         /// <returns></returns>
-        public tbl_Storage GetByID(string locationid)
+        public List<tbl_Storage> GetByID(string Slocationid)
         {
-            tbl_Storage storage;
+            List<tbl_Storage> storage;
             try
             {
-                storage = Context.Storage.GetByID(locationid);
+                storage = Context.Storage.Get(e => e.LocationID == Slocationid.Trim()).ToList();
                 return storage;
             }
             catch (Exception ex)
@@ -98,7 +100,30 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-                storage = null;
+                // storage = null;
+                // Context = null;
+            }
+
+        }
+
+        public List<tbl_Storage> GetByParamId(string Slocationid, string StorageId)
+        {
+            List<tbl_Storage> storage;
+            try
+            {
+                storage = Context.Storage.Get(e => e.LocationID == Slocationid.Trim() && e.StorageID == StorageId).ToList();
+                return storage;
+            }
+            catch (Exception ex)
+            {
+
+                //POS Log Exception to db table
+
+                return null;
+            }
+            finally
+            {
+                // storage = null;
                 // Context = null;
             }
 
@@ -219,28 +244,45 @@ namespace POS.Business.BusinessComponents
         /// <returns></returns>
         public string InsertOrUpdate(tbl_Storage storage)
         {
-            tbl_Storage CurrentStorage = this.GetByID(storage.LocationID);
+            if (storage.StorageID == "D")
+            {
+                storage.StorageName = StorageEnum.Display.ToString();
+            }
+            else if (storage.StorageID == "S")
+            {
+                storage.StorageName = StorageEnum.Store.ToString();
+            }
+            storage.StorageType = string.Empty;
+            List<tbl_Storage> CurrentStorage = this.GetByParamId(storage.LocationID.Trim(), storage.StorageID.Trim());
             string result = string.Empty;
-            if (CurrentStorage == null)
+            if (CurrentStorage == null || CurrentStorage.Count == 0)
             {
                 return result = this.Insert(storage);
             }
             else
             {
-                return result = this.Update(storage);
+                //return result = this.Update(storage);
             }
+            return result;
         }
+
         /// <summary>
         /// Get Storage
         /// </summary>
         /// <returns></returns>
-        public List<Proc_LoadGetLocationStorage_Result> GetStorage()
+        public LocationStorageModel GetStorage()
         {
             List<Proc_LoadGetLocationStorage_Result> LoadGetStorage;
+            List<tbl_Storage> Storages;
+            LocationStorageModel locStorageModel;
             try
             {
                 LoadGetStorage = Context.GetAllStorage().ToList();
-                return LoadGetStorage;
+                Storages = Context.Storage.Get().ToList();
+                locStorageModel = new LocationStorageModel();
+                locStorageModel.StorageLocation = LoadGetStorage;
+                locStorageModel.Storages = Storages;
+                return locStorageModel;
             }
             catch (Exception ex)
             {
@@ -248,10 +290,35 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-
+                LoadGetStorage = null;
+                Storages = null;
+                locStorageModel = null;
             }
         }
+        public LocationStorageModel GetStorageById(string LocationID)
+        {
+            List<Proc_LoadStorageGetById_Result> LoadGetStorage;
+            List<tbl_Storage> Storages;
+            LocationStorageModel locStorageModel;
+            try
+            {
+                LoadGetStorage = Context.GetStorageById(LocationID).ToList();
+                locStorageModel = new LocationStorageModel();
 
-      
+                locStorageModel.LocationID = LoadGetStorage.FirstOrDefault().LocationID;
+                locStorageModel.LocationDesc = LoadGetStorage.FirstOrDefault().LocationDesc;
+                return locStorageModel;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                //LoadGetStorage = null;
+                //Storages = null;
+                //locStorageModel = null;
+            }
+        }
     }
 }

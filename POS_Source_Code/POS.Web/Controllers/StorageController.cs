@@ -24,18 +24,33 @@ namespace POS.Web.Controllers
         // GET: Storage
         public ActionResult Index()
         {
-            List <Proc_LoadGetLocationStorage_Result> locationStorage= StorageBL.GetStorage().ToList();
-            return View(locationStorage);
+            LocationStorageModel LocationStorage = new LocationStorageModel();
+            LocationStorage = StorageBL.GetStorage();
+            return View(LocationStorage);
         }
 
-        public PartialViewResult GetStorageByID(string locationID)
-        {
-            tbl_Storage storage = StorageBL.GetByID(locationID);
-            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", storage);
-        }
+        //public PartialViewResult GetStorageByID(string locationID)
+        //{
+        //   List<tbl_Storage> storageGetById = StorageBL.GetByID(locationID);
+        //    return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", storageGetById);
+        //}
+
         public string InsertOrUpdateStorage(tbl_Storage storage)
         {
             return StorageBL.InsertOrUpdate(storage);
+        }
+
+        public PartialViewResult GetStorageById(string LocationID)
+        {
+            LocationStorageModel LocationStorage = new LocationStorageModel();
+            LocationStorage= StorageBL.GetStorageById(LocationID);
+            LocationStorage.Storages= StorageBL.GetByID(LocationID);
+            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", LocationStorage);
+        }
+        public PartialViewResult GetStorageId(string locationID)
+        {
+           List<tbl_Storage> locationId = StorageBL.GetByID(locationID.Trim());
+            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", locationId);
         }
     }
 }

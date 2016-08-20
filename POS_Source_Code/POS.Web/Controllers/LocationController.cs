@@ -1,5 +1,6 @@
 ﻿using POS.Business.BusinessComponents;
 using POS.Entity.Entities;
+using POS.Util.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace POS.Web.Controllers
 
         public string InsertOrUpdateLocation(tbl_Location location)
         {
+            LocationModel LM = new LocationModel();
+            location.LocationID = LM.LocationID;
             return LocationBL.InsertOrUpdate(location);
         }
     }

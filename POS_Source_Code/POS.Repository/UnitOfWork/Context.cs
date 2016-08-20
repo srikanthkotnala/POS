@@ -122,7 +122,15 @@ namespace POS.Repository.UnitOfWork
         {
             return pOSEntities.Proc_LoadGetLocationStorage().ToList();
         }
-
+        /// <summary>
+        /// Get Storage By Id-Vinod InnerJoin
+        /// </summary>
+        /// <param name="LocationID"></param>
+        /// <returns></returns>
+        public List<Proc_LoadStorageGetById_Result> GetStorageById(string LocationID)
+        {
+            return pOSEntities.Proc_LoadStorageGetById(LocationID).ToList();
+        }
         
 
         #endregion

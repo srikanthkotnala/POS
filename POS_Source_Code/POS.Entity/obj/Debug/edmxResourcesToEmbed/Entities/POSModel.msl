@@ -211,5 +211,16 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_LoadStorageGetById" FunctionName="POSEntityModel.Store.Proc_LoadStorageGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSEntityModel.Proc_LoadStorageGetById_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
+          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

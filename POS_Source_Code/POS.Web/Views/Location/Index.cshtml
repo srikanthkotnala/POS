@@ -1,4 +1,5 @@
 ﻿@using POS.Entity.Entities;
+@using POS.Util.Model;
 @model List<tbl_Location>
 
     @*View for Location/Store list. Created by Srikanth *@
@@ -40,7 +41,7 @@
             </div>
         </div>
         <div id="LocationDetails" class="col-lg-8 noPadBrd">
-            @Html.Partial("~/Views/Location/Partial/_LocationDetailsPartial.cshtml", new tbl_Location())
+            @Html.Partial("~/Views/Location/Partial/_LocationDetailsPartial.cshtml", new LocationModel())
         </div>
 
     </div>

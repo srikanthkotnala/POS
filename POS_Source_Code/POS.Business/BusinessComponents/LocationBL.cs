@@ -7,6 +7,7 @@ using POS.Entity.Entities;
 using POS.Business.Interface;
 using POS.Repository.UnitOfWork;
 using POS.Repository;
+using POS.Util.Model;
 
 namespace POS.Business.BusinessComponents
 {
@@ -74,7 +75,7 @@ namespace POS.Business.BusinessComponents
             finally
             {
                 Location = null;
-               // Context = null;
+                // Context = null;
             }
 
         }
@@ -90,7 +91,7 @@ namespace POS.Business.BusinessComponents
             {
                 Context.Location.Insert(location);
                 Context.Location.Save();
-                return  location.LocationDesc + " Inserted Successfully!!";
+                return location.LocationDesc + " Inserted Successfully!!";
             }
             catch (Exception ex)
             {
@@ -101,7 +102,7 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-               // Context = null;
+                // Context = null;
             }
 
         }
@@ -117,7 +118,7 @@ namespace POS.Business.BusinessComponents
             {
                 Context.Location.Update(location);
                 Context.Location.Save();
-                return location.LocationDesc+" Updated Successfully!!";
+                return location.LocationDesc + " Updated Successfully!!";
             }
             catch (Exception ex)
             {
@@ -128,7 +129,7 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-               // Context = null;
+                // Context = null;
             }
 
         }
@@ -155,7 +156,7 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-               // Context = null;
+                // Context = null;
             }
 
         }
@@ -182,7 +183,7 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-               // Context = null;
+                // Context = null;
             }
 
         }
@@ -194,15 +195,17 @@ namespace POS.Business.BusinessComponents
         /// <returns></returns>
         public string InsertOrUpdate(tbl_Location location)
         {
+            
             tbl_Location CurrentLocation = this.GetByID(location.LocationID.Trim());
+            
             string result = string.Empty;
-            if (CurrentLocation==null)
+            if (CurrentLocation == null)
             {
                 return result = this.Insert(location);
             }
             else
             {
-               return result = this.Update(location);
+                return result = this.Update(location);
             }
         }
     }

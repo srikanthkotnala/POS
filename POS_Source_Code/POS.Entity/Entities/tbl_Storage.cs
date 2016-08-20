@@ -15,6 +15,7 @@ namespace POS.Entity.Entities
     public partial class tbl_Storage
     {
         public string StorageID { get; set; }
+
         public string StorageName { get; set; }
         public string StorageType { get; set; }
         public string LocationID { get; set; }

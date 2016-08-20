@@ -77,5 +77,14 @@ namespace POS.Entity.Entities
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetLocationStorage_Result>("Proc_LoadGetLocationStorage");
         }
+    
+        public virtual ObjectResult<Proc_LoadStorageGetById_Result> Proc_LoadStorageGetById(string locationId)
+        {
+            var locationIdParameter = locationId != null ?
+                new ObjectParameter("LocationId", locationId) :
+                new ObjectParameter("LocationId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadStorageGetById_Result>("Proc_LoadStorageGetById", locationIdParameter);
+        }
     }
 }

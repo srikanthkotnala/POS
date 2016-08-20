@@ -10,7 +10,13 @@ namespace POS.Util.Model
 {
   public  class LocationStorageModel
     {
-        public IEnumerable<Proc_LoadGetLocationStorage_Result> StorageLocation;
-        public IEnumerable<tbl_Storage> Storages;
+        public string LocationID{ get; set; }
+        public string LocationDesc{ get; set; }
+
+        public List<Proc_LoadGetLocationStorage_Result> StorageLocation;
+        public List<tbl_Storage> Storages;
+        public List<Proc_LoadStorageGetById_Result> GetStorageById;
+
+
     }
 }

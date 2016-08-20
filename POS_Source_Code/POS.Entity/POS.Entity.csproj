@@ -86,6 +86,9 @@
     <Compile Include="Entities\Proc_LoadMasterLocation_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Proc_LoadStorageGetById_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\tbl_City.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
