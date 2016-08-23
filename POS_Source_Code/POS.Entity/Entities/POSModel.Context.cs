@@ -27,13 +27,58 @@ namespace POS.Entity.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbl_Category> tbl_Category { get; set; }
+        public virtual DbSet<tbl_City> tbl_City { get; set; }
         public virtual DbSet<tbl_Company> tbl_Company { get; set; }
         public virtual DbSet<tbl_Country> tbl_Country { get; set; }
         public virtual DbSet<tbl_Location> tbl_Location { get; set; }
+        public virtual DbSet<tbl_LocationPrice> tbl_LocationPrice { get; set; }
         public virtual DbSet<tbl_Material> tbl_Material { get; set; }
         public virtual DbSet<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
-        public virtual DbSet<tbl_City> tbl_City { get; set; }
+        public virtual DbSet<tbl_PriceFile> tbl_PriceFile { get; set; }
+        public virtual DbSet<tbl_Region> tbl_Region { get; set; }
         public virtual DbSet<tbl_Storage> tbl_Storage { get; set; }
+        public virtual DbSet<tbl_Tender> tbl_Tender { get; set; }
+        public virtual DbSet<tbl_Terminal> tbl_Terminal { get; set; }
+        public virtual DbSet<tbl_Vendor> tbl_Vendor { get; set; }
+    
+        public virtual ObjectResult<Proc_GetAllLTerminal_Result> Proc_GetAllLTerminal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetAllLTerminal_Result>("Proc_GetAllLTerminal");
+        }
+    
+        public virtual ObjectResult<Proc_GetMasterTerminal_Result> Proc_GetMasterTerminal(string locationID)
+        {
+            var locationIDParameter = locationID != null ?
+                new ObjectParameter("LocationID", locationID) :
+                new ObjectParameter("LocationID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterTerminal_Result>("Proc_GetMasterTerminal", locationIDParameter);
+        }
+    
+        public virtual ObjectResult<Proc_LoadGetLocationStorage_Result> Proc_LoadGetLocationStorage()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetLocationStorage_Result>("Proc_LoadGetLocationStorage");
+        }
+    
+        public virtual ObjectResult<Proc_LoadMasterTerminal_Result> Proc_LoadMasterTerminal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterTerminal_Result>("Proc_LoadMasterTerminal");
+        }
+    
+        public virtual ObjectResult<Proc_LoadMasterVendor_Result> Proc_LoadMasterVendor()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterVendor_Result>("Proc_LoadMasterVendor");
+        }
+    
+        public virtual ObjectResult<Proc_LoadStorageGetById_Result> Proc_LoadStorageGetById(string locationId)
+        {
+            var locationIdParameter = locationId != null ?
+                new ObjectParameter("LocationId", locationId) :
+                new ObjectParameter("LocationId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadStorageGetById_Result>("Proc_LoadStorageGetById", locationIdParameter);
+        }
     
         public virtual ObjectResult<Proc_GetMasterCategory_Result> Proc_GetMasterCategory(string categoryID)
         {
@@ -44,47 +89,9 @@ namespace POS.Entity.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterCategory_Result>("Proc_GetMasterCategory", categoryIDParameter);
         }
     
-        public virtual ObjectResult<Proc_GetMasterMaterial_Result> Proc_GetMasterMaterial(string materialId)
-        {
-            var materialIdParameter = materialId != null ?
-                new ObjectParameter("MaterialId", materialId) :
-                new ObjectParameter("MaterialId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_GetMasterMaterial_Result>("Proc_GetMasterMaterial", materialIdParameter);
-        }
-    
         public virtual ObjectResult<Proc_LoadMasterLocation_Result> Proc_LoadMasterLocation()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadMasterLocation_Result>("Proc_LoadMasterLocation");
-        }
-    
-        public virtual ObjectResult<Proc_LoadGetStorage_Result> Proc_LoadGetStorage()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage_Result>("Proc_LoadGetStorage");
-        }
-    
-        public virtual ObjectResult<Proc_LoadGetStorage1_Result> Proc_LoadGetStorage1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage1_Result>("Proc_LoadGetStorage1");
-        }
-    
-        public virtual ObjectResult<Proc_LoadGetStorage2_Result> Proc_LoadGetStorage2()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetStorage2_Result>("Proc_LoadGetStorage2");
-        }
-    
-        public virtual ObjectResult<Proc_LoadGetLocationStorage_Result> Proc_LoadGetLocationStorage()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadGetLocationStorage_Result>("Proc_LoadGetLocationStorage");
-        }
-    
-        public virtual ObjectResult<Proc_LoadStorageGetById_Result> Proc_LoadStorageGetById(string locationId)
-        {
-            var locationIdParameter = locationId != null ?
-                new ObjectParameter("LocationId", locationId) :
-                new ObjectParameter("LocationId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Proc_LoadStorageGetById_Result>("Proc_LoadStorageGetById", locationIdParameter);
         }
     }
 }

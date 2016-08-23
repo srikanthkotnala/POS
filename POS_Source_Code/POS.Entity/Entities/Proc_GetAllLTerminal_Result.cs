@@ -11,12 +11,11 @@ namespace POS.Entity.Entities
 {
     using System;
     
-    public partial class Proc_LoadGetStorage1_Result
+    public partial class Proc_GetAllLTerminal_Result
     {
         public string LocationID { get; set; }
-        public string StorageID { get; set; }
-        public string StorageName { get; set; }
-        public string StorageType { get; set; }
+        public string TerminalID { get; set; }
         public string LocationDesc { get; set; }
+        public string City { get; set; }
     }
 }

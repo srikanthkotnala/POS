@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     ///Search for  Store / Location / LocationID -Srikanth
     $('#txtSLocationSearch').keyup(function () {
-        $('.locData').hide();
+        $('.SlocData').hide();
         $('#NoRecords').hide();
         var searchText = $('#txtSLocationSearch').val().toLocaleLowerCase();
         var txtLength = searchText.length;

@@ -25,6 +25,7 @@ namespace POS.Web
                       ));
 
             bundles.Add(new ScriptBundle("~/Scripts/js").Include(
+                  "~/Scripts/jquery.js",
                  "~/Scripts/MasterValidation.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/button.js",
@@ -37,7 +38,7 @@ namespace POS.Web
                         "~/Scripts/jquery.cookie.js",
                         "~/Scripts/jquery.easing.1.3.js",
                         "~/Scripts/jquery.equalheights.js",
-                        "~/Scripts/jquery.js",
+
                         //"~/Scripts/jquery.mobile.customized.min.js",
                         "~/Scripts/jquery.mobilemenu.js",
                         "~/Scripts/jquery.rd-google-map.js",
@@ -56,7 +57,10 @@ namespace POS.Web
                         "~/Scripts/jsLocation.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/jquery.validate.unobtrusive.min.js"
+                        "~/Scripts/jquery.validate.unobtrusive.min.js",
+                        "~/Scripts/jsStorage.js",
+                        "~/Scripts/jsTerminal.js",
+                        "~/Scripts/jsVendor.js"
 
 
                         ));

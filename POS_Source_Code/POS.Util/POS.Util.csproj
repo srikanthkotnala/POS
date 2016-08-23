@@ -46,8 +46,11 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Enum\StorageEnum.cs" />
+    <Compile Include="Enum\TerminalEnum.cs" />
     <Compile Include="Model\LocationModel.cs" />
     <Compile Include="Model\LocationStorageModel.cs" />
+    <Compile Include="Model\TerminalModel.cs" />
+    <Compile Include="Model\VendorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

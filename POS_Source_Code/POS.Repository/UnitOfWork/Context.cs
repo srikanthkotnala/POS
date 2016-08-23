@@ -42,7 +42,7 @@ namespace POS.Repository.UnitOfWork
             {
                 this.location = new GenericRepository<tbl_Location>(EntityConstant.POS);
             }
-            
+
         }
 
         /// <summary>
@@ -52,14 +52,16 @@ namespace POS.Repository.UnitOfWork
 
         public GenericRepository<tbl_Storage> Storage
         {
-            get {
-                if(this.storage==null)
+            get
+            {
+                if (this.storage == null)
                 {
                     this.storage = new GenericRepository<tbl_Storage>(EntityConstant.POS);
                 }
                 return storage;
             }
-            set {
+            set
+            {
                 this.storage = new GenericRepository<tbl_Storage>(EntityConstant.POS);
             }
         }
@@ -79,12 +81,97 @@ namespace POS.Repository.UnitOfWork
                 }
                 return locationstorage;
             }
-            set {
+            set
+            {
                 this.locationstorage = new GenericRepository<LocationStorageModel>(EntityConstant.POS);
-                }
+            }
         }
 
+        private GenericRepository<tbl_Terminal> terminal;
 
+        public GenericRepository<tbl_Terminal> Terminal
+        {
+            get
+            {
+                if (this.terminal == null)
+                {
+                    this.terminal = new GenericRepository<tbl_Terminal>(EntityConstant.POS);
+                }
+                return terminal;
+            }
+            set
+            {
+                this.terminal = new GenericRepository<tbl_Terminal>(EntityConstant.POS);
+            }
+        }
+
+        public GenericRepository<tbl_Vendor> vendor;
+        public GenericRepository<tbl_Vendor> Vendor
+        {
+            get
+            {
+                if(this.vendor==null)
+                {
+                    this.vendor = new GenericRepository<tbl_Vendor>(EntityConstant.POS);
+                }
+                return vendor;
+            }
+            set
+            {
+                this.vendor = new GenericRepository<tbl_Vendor>(EntityConstant.POS);
+            }
+
+        }
+
+        public GenericRepository<tbl_City> city;
+        public GenericRepository<tbl_City> City
+        {
+            get
+            {
+                if(this.city==null)
+                {
+                    this.city = new GenericRepository<tbl_City>(EntityConstant.POS);
+                }
+                return city;
+            }
+            set
+            {
+                this.city = new GenericRepository<tbl_City>(EntityConstant.POS);
+            }
+        }
+
+        public GenericRepository<tbl_Country> country;
+        public GenericRepository<tbl_Country> Country
+        {
+            get
+            {
+                if(this.country==null)
+                {
+                    this.country = new GenericRepository<tbl_Country>(EntityConstant.POS);
+                }
+                return country;
+            }
+            set
+            {
+                this.country = new GenericRepository<tbl_Country>(EntityConstant.POS);
+            }
+        }
+        public GenericRepository<tbl_Region> region;
+        public GenericRepository<tbl_Region> Region
+        {
+            get
+            {
+                if(this.region==null)
+                {
+                    this.region = new GenericRepository<tbl_Region>(EntityConstant.POS);
+                }
+                return region;
+            }
+            set
+            {
+                this.region = new GenericRepository<tbl_Region>(EntityConstant.POS);
+            }
+        }
 
 
         #endregion
@@ -103,7 +190,7 @@ namespace POS.Repository.UnitOfWork
             return pOSEntities.Proc_GetMasterCategory(CategoryID).ToList();
         }
 
-      
+
         /// <summary>
         /// Get all location details
         /// </summary>
@@ -131,7 +218,15 @@ namespace POS.Repository.UnitOfWork
         {
             return pOSEntities.Proc_LoadStorageGetById(LocationID).ToList();
         }
-        
+
+        public List<Proc_GetAllLTerminal_Result> GetAllTerminal()
+        {
+            return pOSEntities.Proc_GetAllLTerminal().ToList();
+        }
+        public List<Proc_GetMasterTerminal_Result> GetMTeminal(string LocationID)
+        {
+            return pOSEntities.Proc_GetMasterTerminal(LocationID).ToList();
+        }
 
         #endregion
     }

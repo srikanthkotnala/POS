@@ -30,8 +30,8 @@ namespace POS.Entity.Entities
         public string Country { get; set; }
         public string DefaultCurrency { get; set; }
     
+        public virtual tbl_City tbl_City { get; set; }
         public virtual tbl_Company tbl_Company1 { get; set; }
         public virtual tbl_Company tbl_Company2 { get; set; }
-        public virtual tbl_City tbl_City { get; set; }
     }
 }

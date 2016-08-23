@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="POSEntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="POSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CategoryDesc" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_City">
     <Key>
       <PropertyRef Name="CityID" />
@@ -68,6 +75,17 @@
     <Property Name="RtnVendor" Type="nvarchar" MaxLength="50" />
     <Property Name="PhyCount" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="tbl_LocationPrice">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="5" />
+  </EntityType>
   <EntityType Name="tbl_Material">
     <Key>
       <PropertyRef Name="MaterialID" />
@@ -107,6 +125,22 @@
     <Property Name="BaseUOM" Type="nvarchar" MaxLength="10" />
     <Property Name="MaterialMix" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <EntityType Name="tbl_PriceFile">
+    <Key>
+      <PropertyRef Name="EAN13" />
+    </Key>
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="5" />
+  </EntityType>
+  <EntityType Name="tbl_Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbl_Storage">
     <Key>
       <PropertyRef Name="StorageID" />
@@ -117,6 +151,60 @@
     <Property Name="StorageType" Type="nvarchar" MaxLength="50" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_Tender">
+    <Key>
+      <PropertyRef Name="TenderID" />
+    </Key>
+    <Property Name="TenderID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenderName" Type="nvarchar" MaxLength="50" />
+    <Property Name="GL_Debit" Type="nvarchar" MaxLength="30" />
+    <Property Name="GL_Credit" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tbl_Terminal">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Vendor">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+    <Property Name="POBox" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustInt1" Type="int" />
+    <Property Name="CustInt2" Type="int" />
+    <Property Name="CustInt3" Type="int" />
+    <Property Name="CustText1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText3" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_tbl_Category_tbl_Category">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+    <End Role="tbl_Category1" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Category1">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_City">
     <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="1" />
     <End Role="tbl_City1" Type="Self.tbl_City" Multiplicity="0..1" />
@@ -177,6 +265,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_LocationPrice_tbl_LocationPrice">
+    <End Role="tbl_LocationPrice" Type="Self.tbl_LocationPrice" Multiplicity="1" />
+    <End Role="tbl_LocationPrice1" Type="Self.tbl_LocationPrice" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_LocationPrice">
+        <PropertyRef Name="LocationID" />
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_LocationPrice1">
+        <PropertyRef Name="LocationID" />
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Material">
     <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="1" />
     <End Role="tbl_Material1" Type="Self.tbl_Material" Multiplicity="0..1" />
@@ -186,6 +288,30 @@
       </Principal>
       <Dependent Role="tbl_Material1">
         <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Material_tbl_Category">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Material_tbl_Vendor">
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vendor">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="VendorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -213,6 +339,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_PriceFile">
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="1" />
+    <End Role="tbl_PriceFile1" Type="Self.tbl_PriceFile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PriceFile">
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile1">
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_Material">
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="0..1" />
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Material">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_MaterialEAN">
+    <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="1" />
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_MaterialEAN">
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Storage_tbl_Location">
     <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
     <End Role="tbl_Storage" Type="Self.tbl_Storage" Multiplicity="*" />
@@ -225,25 +387,87 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Tender_tbl_Tender">
+    <End Role="tbl_Tender" Type="Self.tbl_Tender" Multiplicity="1" />
+    <End Role="tbl_Tender1" Type="Self.tbl_Tender" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Tender">
+        <PropertyRef Name="TenderID" />
+      </Principal>
+      <Dependent Role="tbl_Tender1">
+        <PropertyRef Name="TenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Terminal_tbl_Location">
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+    <End Role="tbl_Terminal" Type="Self.tbl_Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tbl_Terminal">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vendor">
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="1" />
+    <End Role="tbl_Vendor1" Type="Self.tbl_Vendor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vendor">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="tbl_Vendor1">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vendor_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Vendor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Proc_GetAllLTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Proc_GetMasterCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CategoryID" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="Proc_GetMasterMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="MaterialId" Type="nvarchar" Mode="In" />
+  <Function Name="Proc_GetMasterTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationID" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="Proc_LoadGetLocationStorage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Proc_LoadMasterLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_LoadMasterTerminal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Proc_LoadMasterVendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Proc_LoadStorageGetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LocationId" Type="nvarchar" Mode="In" />
   </Function>
-  <EntityContainer Name="POSEntityModelStoreContainer">
+  <EntityContainer Name="POSModelStoreContainer">
+    <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_City" EntityType="Self.tbl_City" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_LocationPrice" EntityType="Self.tbl_LocationPrice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Material" EntityType="Self.tbl_Material" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_MaterialEAN" EntityType="Self.tbl_MaterialEAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PriceFile" EntityType="Self.tbl_PriceFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Region" EntityType="Self.tbl_Region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Storage" EntityType="Self.tbl_Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Tender" EntityType="Self.tbl_Tender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Terminal" EntityType="Self.tbl_Terminal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Vendor" EntityType="Self.tbl_Vendor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbl_Category_tbl_Category" Association="Self.FK_tbl_Category_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Category1" EntitySet="tbl_Category" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_City" Association="Self.FK_tbl_City">
       <End Role="tbl_City" EntitySet="tbl_City" />
       <End Role="tbl_City1" EntitySet="tbl_City" />
@@ -264,9 +488,21 @@
       <End Role="tbl_City" EntitySet="tbl_City" />
       <End Role="tbl_Location" EntitySet="tbl_Location" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_LocationPrice_tbl_LocationPrice" Association="Self.FK_tbl_LocationPrice_tbl_LocationPrice">
+      <End Role="tbl_LocationPrice" EntitySet="tbl_LocationPrice" />
+      <End Role="tbl_LocationPrice1" EntitySet="tbl_LocationPrice" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Material" Association="Self.FK_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_Material1" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_Category" Association="Self.FK_tbl_Material_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_Vendor" Association="Self.FK_tbl_Material_tbl_Vendor">
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_MaterialEAN" Association="Self.FK_tbl_MaterialEAN">
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
@@ -276,9 +512,37 @@
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile" Association="Self.FK_tbl_PriceFile">
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+      <End Role="tbl_PriceFile1" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_Material" Association="Self.FK_tbl_PriceFile_tbl_Material">
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_MaterialEAN" Association="Self.FK_tbl_PriceFile_tbl_MaterialEAN">
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Storage_tbl_Location" Association="Self.FK_tbl_Storage_tbl_Location">
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Storage" EntitySet="tbl_Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Tender_tbl_Tender" Association="Self.FK_tbl_Tender_tbl_Tender">
+      <End Role="tbl_Tender" EntitySet="tbl_Tender" />
+      <End Role="tbl_Tender1" EntitySet="tbl_Tender" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Terminal_tbl_Location" Association="Self.FK_tbl_Terminal_tbl_Location">
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+      <End Role="tbl_Terminal" EntitySet="tbl_Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vendor" Association="Self.FK_tbl_Vendor">
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
+      <End Role="tbl_Vendor1" EntitySet="tbl_Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vendor_tbl_City" Association="Self.FK_tbl_Vendor_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

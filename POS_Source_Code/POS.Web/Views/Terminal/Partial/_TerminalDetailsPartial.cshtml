@@ -1,0 +1,77 @@
+﻿@using POS.Entity.Entities
+@using POS.Util.Model
+@using POS.Util.Enum
+@model TerminalModel
+
+@{ string disabled = string.Empty;}
+@if (Model != null)
+{
+    if (!string.IsNullOrEmpty(Model.LocationID))
+    {
+        disabled = "disabled";
+        <div class="mrg_left_5per"><h3>Update @Model.LocationDesc Details</h3> </div>
+    }
+    else
+    {
+        <div class="mrg_left_5per"><h3>Add New Store/Location</h3></div>
+    }
+}
+else
+{
+    <div class="mrg_left_5per"><h3>Add New Store/Location</h3></div>
+}
+@using (Ajax.BeginForm("InsertOrUpdateTerminal", "Terminal", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "updatedMessage",
+    LoadingElementId = "loader"
+}))
+{
+<div class="col-lg-12">
+    <div class="col-lg-12 pad_2per">
+        <div class="col-lg-12 pad_1perdiv">
+            <div class="col-lg-12"><div class="col-lg-3"><h5>Location ID :</h5></div><div class="col-lg-6">@Html.TextBoxFor(e => e.LocationID) </div>@Html.ValidationMessageFor(e => e.LocationID, null, new { @class = "err_mgs" })</div>
+            <div class="col-lg-12"><div class="col-lg-3"><h5>Terminal ID :</h5></div><div class="col-lg-6">@Html.DropDownListFor(e => e.TerminalID, new SelectList(Enum.GetValues(typeof(TerminalEnum))),"Select Terminal ID", new { @class = "dropdown" })</div>@Html.ValidationMessageFor(e => e.TerminalID, null, new { @class = "err_mgs" })</div>
+            <div class="col-lg-12"><div class="col-lg-3"><h5>Location Name :</h5></div><div class="col-lg-6">@Html.TextBoxFor(e => e.LocationDesc)</div></div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-3"><h5></h5></div>
+            <div class="btn-group-lg" role="group" aria-label="Large button group">
+                <input type="submit" class="btn btn-default btn_inpt_sumbit" value="Save" />
+                <button type="button" class="btn btn-default btn_inpt_cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<div class="col-lg-12">
+    <div class="col-lg-12">
+        <div class="col-lg-5 stng_Hdr">LocationID</div>
+        <div class="col-lg-5 stng_Hdr">Terminal Id</div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="ovrflow">
+
+        @if (Model.Terminal != null)
+            {
+                foreach (tbl_Terminal terminal in Model.Terminal)
+                {
+
+                <div class="col-lg-12 stng_text">
+                    <div class="col-lg-5 stng_text">@terminal.LocationID</div>
+                    <div class="col-lg-5 stng_text">@terminal.TerminalID</div>
+                </div>
+            }
+            <small id="NoRecords" class="lead" style="display:none">
+                No records found.
+            </small>
+        }
+        else
+        {
+            <small class="lead">
+                No records found.
+            </small>
+        }
+    </div>
+</div>

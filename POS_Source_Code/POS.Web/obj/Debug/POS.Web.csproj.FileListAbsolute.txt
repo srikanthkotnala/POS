@@ -264,3 +264,5 @@ C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\POS.Reposito
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\obj\Debug\POS.Web.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\obj\Debug\POS.Web.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\obj\Debug\POS.Web.pdb
+C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\AutoMapper.dll
+C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Web\bin\AutoMapper.xml

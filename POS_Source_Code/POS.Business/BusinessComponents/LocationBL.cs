@@ -9,6 +9,7 @@ using POS.Repository.UnitOfWork;
 using POS.Repository;
 using POS.Util.Model;
 
+
 namespace POS.Business.BusinessComponents
 {
     ///Created by Srikanth Kotnala on 8/6/2016
@@ -74,7 +75,7 @@ namespace POS.Business.BusinessComponents
             }
             finally
             {
-                Location = null;
+                //Location = null;
                 // Context = null;
             }
 

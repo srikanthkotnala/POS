@@ -1,8 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="POSEntityModelStoreContainer" CdmEntityContainer="POSEntities">
+  <EntityContainerMapping StorageEntityContainer="POSModelStoreContainer" CdmEntityContainer="POSEntities">
+    <EntitySetMapping Name="tbl_Category">
+      <EntityTypeMapping TypeName="POSModel.tbl_Category">
+        <MappingFragment StoreEntitySet="tbl_Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_City">
+      <EntityTypeMapping TypeName="POSModel.tbl_City">
+        <MappingFragment StoreEntitySet="tbl_City">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbl_Company">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_Company">
+      <EntityTypeMapping TypeName="POSModel.tbl_Company">
         <MappingFragment StoreEntitySet="tbl_Company">
           <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
           <ScalarProperty Name="LongName" ColumnName="LongName" />
@@ -23,7 +39,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbl_Country">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_Country">
+      <EntityTypeMapping TypeName="POSModel.tbl_Country">
         <MappingFragment StoreEntitySet="tbl_Country">
           <ScalarProperty Name="CountryID" ColumnName="CountryID" />
           <ScalarProperty Name="CountryName" ColumnName="CountryName" />
@@ -31,7 +47,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbl_Location">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_Location">
+      <EntityTypeMapping TypeName="POSModel.tbl_Location">
         <MappingFragment StoreEntitySet="tbl_Location">
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
@@ -65,8 +81,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_LocationPrice">
+      <EntityTypeMapping TypeName="POSModel.tbl_LocationPrice">
+        <MappingFragment StoreEntitySet="tbl_LocationPrice">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbl_Material">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_Material">
+      <EntityTypeMapping TypeName="POSModel.tbl_Material">
         <MappingFragment StoreEntitySet="tbl_Material">
           <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
           <ScalarProperty Name="MaterialDesc1" ColumnName="MaterialDesc1" />
@@ -95,7 +122,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tbl_MaterialEAN">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_MaterialEAN">
+      <EntityTypeMapping TypeName="POSModel.tbl_MaterialEAN">
         <MappingFragment StoreEntitySet="tbl_MaterialEAN">
           <ScalarProperty Name="EAN13" ColumnName="EAN13" />
           <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
@@ -106,49 +133,166 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Proc_GetMasterCategory" FunctionName="POSEntityModel.Store.Proc_GetMasterCategory">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="POSEntityModel.Proc_GetMasterCategory_Result">
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Proc_GetMasterMaterial" FunctionName="POSEntityModel.Store.Proc_GetMasterMaterial">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="POSEntityModel.Proc_GetMasterMaterial_Result">
+    <EntitySetMapping Name="tbl_PriceFile">
+      <EntityTypeMapping TypeName="POSModel.tbl_PriceFile">
+        <MappingFragment StoreEntitySet="tbl_PriceFile">
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
           <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-          <ScalarProperty Name="MaterialDesc1" ColumnName="MaterialDesc1" />
-          <ScalarProperty Name="MaterialDesc2" ColumnName="MaterialDesc2" />
-          <ScalarProperty Name="MaterialDesc3" ColumnName="MaterialDesc3" />
-          <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
-          <ScalarProperty Name="BaseUOM" ColumnName="BaseUOM" />
-          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Region">
+      <EntityTypeMapping TypeName="POSModel.tbl_Region">
+        <MappingFragment StoreEntitySet="tbl_Region">
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Storage">
+      <EntityTypeMapping TypeName="POSModel.tbl_Storage">
+        <MappingFragment StoreEntitySet="tbl_Storage">
+          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
+          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Tender">
+      <EntityTypeMapping TypeName="POSModel.tbl_Tender">
+        <MappingFragment StoreEntitySet="tbl_Tender">
+          <ScalarProperty Name="TenderID" ColumnName="TenderID" />
+          <ScalarProperty Name="TenderName" ColumnName="TenderName" />
+          <ScalarProperty Name="GL_Debit" ColumnName="GL_Debit" />
+          <ScalarProperty Name="GL_Credit" ColumnName="GL_Credit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Terminal">
+      <EntityTypeMapping TypeName="POSModel.tbl_Terminal">
+        <MappingFragment StoreEntitySet="tbl_Terminal">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Vendor">
+      <EntityTypeMapping TypeName="POSModel.tbl_Vendor">
+        <MappingFragment StoreEntitySet="tbl_Vendor">
           <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="Name1" ColumnName="Name1" />
+          <ScalarProperty Name="Name2" ColumnName="Name2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
           <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
           <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
-          <ScalarProperty Name="CustDate1" ColumnName="CustDate1" />
-          <ScalarProperty Name="CustDate2" ColumnName="CustDate2" />
-          <ScalarProperty Name="CustDate3" ColumnName="CustDate3" />
           <ScalarProperty Name="CustText1" ColumnName="CustText1" />
           <ScalarProperty Name="CustText2" ColumnName="CustText2" />
           <ScalarProperty Name="CustText3" ColumnName="CustText3" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
-          <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
-          <ScalarProperty Name="Dataid" ColumnName="Dataid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Proc_GetAllLTerminal" FunctionName="POSModel.Store.Proc_GetAllLTerminal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_GetAllLTerminal_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_GetMasterTerminal" FunctionName="POSModel.Store.Proc_GetMasterTerminal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_GetMasterTerminal_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_LoadGetLocationStorage" FunctionName="POSModel.Store.Proc_LoadGetLocationStorage">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_LoadGetLocationStorage_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
+          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_LoadMasterTerminal" FunctionName="POSModel.Store.Proc_LoadMasterTerminal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_LoadMasterTerminal_Result">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_LoadMasterVendor" FunctionName="POSModel.Store.Proc_LoadMasterVendor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_LoadMasterVendor_Result">
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
           <ScalarProperty Name="Name1" ColumnName="Name1" />
-          <ScalarProperty Name="SubCategoryDesc" ColumnName="SubCategoryDesc" />
+          <ScalarProperty Name="Name2" ColumnName="Name2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address3" ColumnName="Address3" />
+          <ScalarProperty Name="POBox" ColumnName="POBox" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
+          <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
+          <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
+          <ScalarProperty Name="CustText1" ColumnName="CustText1" />
+          <ScalarProperty Name="CustText2" ColumnName="CustText2" />
+          <ScalarProperty Name="CustText3" ColumnName="CustText3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_LoadStorageGetById" FunctionName="POSModel.Store.Proc_LoadStorageGetById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_LoadStorageGetById_Result">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
+          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
+          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
+          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_GetMasterCategory" FunctionName="POSModel.Store.Proc_GetMasterCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="POSModel.Proc_GetMasterCategory_Result">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
           <ScalarProperty Name="CategoryDesc" ColumnName="CategoryDesc" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Proc_LoadMasterLocation" FunctionName="POSEntityModel.Store.Proc_LoadMasterLocation">
+    <FunctionImportMapping FunctionImportName="Proc_LoadMasterLocation" FunctionName="POSModel.Store.Proc_LoadMasterLocation">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="POSEntityModel.Proc_LoadMasterLocation_Result">
+        <ComplexTypeMapping TypeName="POSModel.Proc_LoadMasterLocation_Result">
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
           <ScalarProperty Name="Address1" ColumnName="Address1" />
@@ -178,47 +322,6 @@
           <ScalarProperty Name="TfrOut" ColumnName="TfrOut" />
           <ScalarProperty Name="RtnVendor" ColumnName="RtnVendor" />
           <ScalarProperty Name="PhyCount" ColumnName="PhyCount" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="tbl_City">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_City">
-        <MappingFragment StoreEntitySet="tbl_City">
-          <ScalarProperty Name="CityName" ColumnName="CityName" />
-          <ScalarProperty Name="CityID" ColumnName="CityID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Storage">
-      <EntityTypeMapping TypeName="POSEntityModel.tbl_Storage">
-        <MappingFragment StoreEntitySet="tbl_Storage">
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
-          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
-          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Proc_LoadGetLocationStorage" FunctionName="POSEntityModel.Store.Proc_LoadGetLocationStorage">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="POSEntityModel.Proc_LoadGetLocationStorage_Result">
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
-          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
-          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
-          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
-          <ScalarProperty Name="City" ColumnName="City" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="Proc_LoadStorageGetById" FunctionName="POSEntityModel.Store.Proc_LoadStorageGetById">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="POSEntityModel.Proc_LoadStorageGetById_Result">
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="LocationDesc" ColumnName="LocationDesc" />
-          <ScalarProperty Name="StorageID" ColumnName="StorageID" />
-          <ScalarProperty Name="StorageName" ColumnName="StorageName" />
-          <ScalarProperty Name="StorageType" ColumnName="StorageType" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -10,14 +10,17 @@
 namespace POS.Entity.Entities
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Proc_LoadGetStorage2_Result
+    public partial class tbl_LocationPrice
     {
         public string LocationID { get; set; }
-        public string StorageID { get; set; }
-        public string StorageName { get; set; }
-        public string StorageType { get; set; }
-        public string LocationDesc { get; set; }
-        public string City { get; set; }
+        public string EAN13 { get; set; }
+        public string MaterialID { get; set; }
+        public string UOM { get; set; }
+        public Nullable<decimal> Price { get; set; }
+    
+        public virtual tbl_LocationPrice tbl_LocationPrice1 { get; set; }
+        public virtual tbl_LocationPrice tbl_LocationPrice2 { get; set; }
     }
 }

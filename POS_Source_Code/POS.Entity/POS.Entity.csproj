@@ -65,28 +65,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>POSModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Proc_GetAllLTerminal_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Proc_GetMasterCategory_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Proc_GetMasterMaterial_Result.cs">
+    <Compile Include="Entities\Proc_GetMasterTerminal_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Proc_LoadGetLocationStorage_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Proc_LoadGetStorage1_Result.cs">
-      <DependentUpon>POSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Proc_LoadGetStorage2_Result.cs">
-      <DependentUpon>POSModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Proc_LoadGetStorage_Result.cs">
-      <DependentUpon>POSModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Proc_LoadMasterLocation_Result.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Proc_LoadMasterTerminal_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Proc_LoadMasterVendor_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Proc_LoadStorageGetById_Result.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Category.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\tbl_City.cs">
@@ -101,13 +104,31 @@
     <Compile Include="Entities\tbl_Location.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\tbl_LocationPrice.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\tbl_Material.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\tbl_MaterialEAN.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\tbl_PriceFile.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Region.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\tbl_Storage.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Tender.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Terminal.cs">
+      <DependentUpon>POSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\tbl_Vendor.cs">
       <DependentUpon>POSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +147,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Entities\POSModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

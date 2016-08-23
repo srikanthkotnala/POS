@@ -4,23 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f808468da04149e5a87930ed85351bc4" Name="Diagram1">
-        <EntityTypeShape EntityType="POSEntityModel.tbl_Company" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_Country" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_Location" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_Material" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_MaterialEAN" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Location" ManuallyRouted="false" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_MaterialEAN_tbl_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_MaterialEAN" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_City" Width="1.5" PointX="7.75" PointY="4.25" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_City" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Company_tbl_City" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Location_tbl_City" />
-        <EntityTypeShape EntityType="POSEntityModel.tbl_Storage" Width="1.5" PointX="8" PointY="7.5" />
-        <AssociationConnector Association="POSEntityModel.FK_tbl_Storage_tbl_Location" />
+      <Diagram DiagramId="0a11f48739e64c0790af02755c67bc1f" Name="Diagram1">
+        <EntityTypeShape EntityType="POSModel.tbl_Category" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_City" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Company" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Country" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Location" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_LocationPrice" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Material" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_MaterialEAN" Width="1.5" PointX="7.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_PriceFile" Width="1.5" PointX="9.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Region" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Storage" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Tender" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Terminal" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.tbl_Vendor" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="POSModel.FK_tbl_Category_tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Material_tbl_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Company_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Location_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Vendor_tbl_City" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Storage_tbl_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Terminal_tbl_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_LocationPrice_tbl_LocationPrice" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Material_tbl_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_MaterialEAN_tbl_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_PriceFile_tbl_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_MaterialEAN" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_PriceFile_tbl_MaterialEAN" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_PriceFile" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Tender_tbl_Tender" ManuallyRouted="false" />
+        <AssociationConnector Association="POSModel.FK_tbl_Vendor" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -42,8 +42,12 @@
   <ItemGroup>
     <Compile Include="BusinessComponents\LocationBL.cs" />
     <Compile Include="BusinessComponents\StorageBL.cs" />
+    <Compile Include="BusinessComponents\TerminalBL.cs" />
+    <Compile Include="BusinessComponents\VendorBL.cs" />
     <Compile Include="Interface\ILocation.cs" />
     <Compile Include="Interface\IStorage.cs" />
+    <Compile Include="Interface\ITerminal.cs" />
+    <Compile Include="Interface\IVendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="POSEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="POSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Category1" Relationship="Self.FK_tbl_Category_tbl_Category" FromRole="tbl_Category" ToRole="tbl_Category1" />
+    <NavigationProperty Name="tbl_Category2" Relationship="Self.FK_tbl_Category_tbl_Category" FromRole="tbl_Category1" ToRole="tbl_Category" />
+    <NavigationProperty Name="tbl_Material" Relationship="Self.FK_tbl_Material_tbl_Category" FromRole="tbl_Category" ToRole="tbl_Material" />
+  </EntityType>
+  <EntityType Name="tbl_City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_City1" Relationship="Self.FK_tbl_City" FromRole="tbl_City" ToRole="tbl_City1" />
+    <NavigationProperty Name="tbl_City2" Relationship="Self.FK_tbl_City" FromRole="tbl_City1" ToRole="tbl_City" />
+    <NavigationProperty Name="tbl_Company" Relationship="Self.FK_tbl_Company_tbl_City" FromRole="tbl_City" ToRole="tbl_Company" />
+    <NavigationProperty Name="tbl_Location" Relationship="Self.FK_tbl_Location_tbl_City" FromRole="tbl_City" ToRole="tbl_Location" />
+    <NavigationProperty Name="tbl_Vendor" Relationship="Self.FK_tbl_Vendor_tbl_City" FromRole="tbl_City" ToRole="tbl_Vendor" />
+  </EntityType>
   <EntityType Name="tbl_Company">
     <Key>
       <PropertyRef Name="CompanyID" />
@@ -19,9 +41,9 @@
     <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DefaultCurrency" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tbl_City" Relationship="Self.FK_tbl_Company_tbl_City" FromRole="tbl_Company" ToRole="tbl_City" />
     <NavigationProperty Name="tbl_Company1" Relationship="Self.FK_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Company1" />
     <NavigationProperty Name="tbl_Company2" Relationship="Self.FK_tbl_Company" FromRole="tbl_Company1" ToRole="tbl_Company" />
-    <NavigationProperty Name="tbl_City" Relationship="POSEntityModel.FK_tbl_Company_tbl_City" FromRole="tbl_Company" ToRole="tbl_City" />
   </EntityType>
   <EntityType Name="tbl_Country">
     <Key>
@@ -63,10 +85,24 @@
     <Property Name="TfrOut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RtnVendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PhyCount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_City" Relationship="Self.FK_tbl_Location_tbl_City" FromRole="tbl_Location" ToRole="tbl_City" />
     <NavigationProperty Name="tbl_Location1" Relationship="Self.FK_tbl_Location" FromRole="tbl_Location" ToRole="tbl_Location1" />
     <NavigationProperty Name="tbl_Location2" Relationship="Self.FK_tbl_Location" FromRole="tbl_Location1" ToRole="tbl_Location" />
-    <NavigationProperty Name="tbl_City" Relationship="POSEntityModel.FK_tbl_Location_tbl_City" FromRole="tbl_Location" ToRole="tbl_City" />
-    <NavigationProperty Name="tbl_Storage" Relationship="POSEntityModel.FK_tbl_Storage_tbl_Location" FromRole="tbl_Location" ToRole="tbl_Storage" />
+    <NavigationProperty Name="tbl_Storage" Relationship="Self.FK_tbl_Storage_tbl_Location" FromRole="tbl_Location" ToRole="tbl_Storage" />
+    <NavigationProperty Name="tbl_Terminal" Relationship="Self.FK_tbl_Terminal_tbl_Location" FromRole="tbl_Location" ToRole="tbl_Terminal" />
+  </EntityType>
+  <EntityType Name="tbl_LocationPrice">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+    </Key>
+    <Property Name="LocationID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EAN13" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="5" />
+    <NavigationProperty Name="tbl_LocationPrice1" Relationship="Self.FK_tbl_LocationPrice_tbl_LocationPrice" FromRole="tbl_LocationPrice" ToRole="tbl_LocationPrice1" />
+    <NavigationProperty Name="tbl_LocationPrice2" Relationship="Self.FK_tbl_LocationPrice_tbl_LocationPrice" FromRole="tbl_LocationPrice1" ToRole="tbl_LocationPrice" />
   </EntityType>
   <EntityType Name="tbl_Material">
     <Key>
@@ -95,9 +131,12 @@
     <Property Name="AddDate" Type="DateTime" Precision="0" />
     <Property Name="UpdDate" Type="DateTime" Precision="0" />
     <Property Name="Dataid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="tbl_Category" Relationship="Self.FK_tbl_Material_tbl_Category" FromRole="tbl_Material" ToRole="tbl_Category" />
     <NavigationProperty Name="tbl_Material1" Relationship="Self.FK_tbl_Material" FromRole="tbl_Material" ToRole="tbl_Material1" />
     <NavigationProperty Name="tbl_Material2" Relationship="Self.FK_tbl_Material" FromRole="tbl_Material1" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_Vendor" Relationship="Self.FK_tbl_Material_tbl_Vendor" FromRole="tbl_Material" ToRole="tbl_Vendor" />
     <NavigationProperty Name="tbl_MaterialEAN" Relationship="Self.FK_tbl_MaterialEAN_tbl_Material" FromRole="tbl_Material" ToRole="tbl_MaterialEAN" />
+    <NavigationProperty Name="tbl_PriceFile" Relationship="Self.FK_tbl_PriceFile_tbl_Material" FromRole="tbl_Material" ToRole="tbl_PriceFile" />
   </EntityType>
   <EntityType Name="tbl_MaterialEAN">
     <Key>
@@ -112,7 +151,160 @@
     <NavigationProperty Name="tbl_Material" Relationship="Self.FK_tbl_MaterialEAN_tbl_Material" FromRole="tbl_MaterialEAN" ToRole="tbl_Material" />
     <NavigationProperty Name="tbl_MaterialEAN1" Relationship="Self.FK_tbl_MaterialEAN" FromRole="tbl_MaterialEAN" ToRole="tbl_MaterialEAN1" />
     <NavigationProperty Name="tbl_MaterialEAN2" Relationship="Self.FK_tbl_MaterialEAN" FromRole="tbl_MaterialEAN1" ToRole="tbl_MaterialEAN" />
+    <NavigationProperty Name="tbl_PriceFile" Relationship="Self.FK_tbl_PriceFile_tbl_MaterialEAN" FromRole="tbl_MaterialEAN" ToRole="tbl_PriceFile" />
   </EntityType>
+  <EntityType Name="tbl_PriceFile">
+    <Key>
+      <PropertyRef Name="EAN13" />
+    </Key>
+    <Property Name="EAN13" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="5" />
+    <NavigationProperty Name="tbl_Material" Relationship="Self.FK_tbl_PriceFile_tbl_Material" FromRole="tbl_PriceFile" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_MaterialEAN" Relationship="Self.FK_tbl_PriceFile_tbl_MaterialEAN" FromRole="tbl_PriceFile" ToRole="tbl_MaterialEAN" />
+    <NavigationProperty Name="tbl_PriceFile1" Relationship="Self.FK_tbl_PriceFile" FromRole="tbl_PriceFile" ToRole="tbl_PriceFile1" />
+    <NavigationProperty Name="tbl_PriceFile2" Relationship="Self.FK_tbl_PriceFile" FromRole="tbl_PriceFile1" ToRole="tbl_PriceFile" />
+  </EntityType>
+  <EntityType Name="tbl_Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Storage">
+    <Key>
+      <PropertyRef Name="StorageID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="StorageID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StorageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StorageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Location" Relationship="Self.FK_tbl_Storage_tbl_Location" FromRole="tbl_Storage" ToRole="tbl_Location" />
+  </EntityType>
+  <EntityType Name="tbl_Tender">
+    <Key>
+      <PropertyRef Name="TenderID" />
+    </Key>
+    <Property Name="TenderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GL_Debit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="GL_Credit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Tender1" Relationship="Self.FK_tbl_Tender_tbl_Tender" FromRole="tbl_Tender" ToRole="tbl_Tender1" />
+    <NavigationProperty Name="tbl_Tender2" Relationship="Self.FK_tbl_Tender_tbl_Tender" FromRole="tbl_Tender1" ToRole="tbl_Tender" />
+  </EntityType>
+  <EntityType Name="tbl_Terminal">
+    <Key>
+      <PropertyRef Name="TerminalID" />
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="TerminalID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocationID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tbl_Location" Relationship="Self.FK_tbl_Terminal_tbl_Location" FromRole="tbl_Terminal" ToRole="tbl_Location" />
+  </EntityType>
+  <EntityType Name="tbl_Vendor">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="POBox" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustInt1" Type="Int32" />
+    <Property Name="CustInt2" Type="Int32" />
+    <Property Name="CustInt3" Type="Int32" />
+    <Property Name="CustText1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustText2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustText3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_City" Relationship="Self.FK_tbl_Vendor_tbl_City" FromRole="tbl_Vendor" ToRole="tbl_City" />
+    <NavigationProperty Name="tbl_Material" Relationship="Self.FK_tbl_Material_tbl_Vendor" FromRole="tbl_Vendor" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_Vendor1" Relationship="Self.FK_tbl_Vendor" FromRole="tbl_Vendor" ToRole="tbl_Vendor1" />
+    <NavigationProperty Name="tbl_Vendor2" Relationship="Self.FK_tbl_Vendor" FromRole="tbl_Vendor1" ToRole="tbl_Vendor" />
+  </EntityType>
+  <Association Name="FK_tbl_Category_tbl_Category">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="1" />
+    <End Role="tbl_Category1" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Category1">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Material_tbl_Category">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="1" />
+    <End Role="tbl_City1" Type="Self.tbl_City" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_City1">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Company_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Company">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Location_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Location">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vendor_tbl_City">
+    <End Role="tbl_City" Type="Self.tbl_City" Multiplicity="0..1" />
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="tbl_Vendor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Company">
     <End Role="tbl_Company" Type="Self.tbl_Company" Multiplicity="1" />
     <End Role="tbl_Company1" Type="Self.tbl_Company" Multiplicity="0..1" />
@@ -137,6 +329,44 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Storage_tbl_Location">
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+    <End Role="tbl_Storage" Type="Self.tbl_Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tbl_Storage">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Terminal_tbl_Location">
+    <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
+    <End Role="tbl_Terminal" Type="Self.tbl_Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="tbl_Terminal">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_LocationPrice_tbl_LocationPrice">
+    <End Role="tbl_LocationPrice" Type="Self.tbl_LocationPrice" Multiplicity="1" />
+    <End Role="tbl_LocationPrice1" Type="Self.tbl_LocationPrice" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_LocationPrice">
+        <PropertyRef Name="LocationID" />
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_LocationPrice1">
+        <PropertyRef Name="LocationID" />
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Material">
     <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="1" />
     <End Role="tbl_Material1" Type="Self.tbl_Material" Multiplicity="0..1" />
@@ -149,6 +379,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Material_tbl_Vendor">
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vendor">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_MaterialEAN_tbl_Material">
     <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="0..1" />
     <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="*" />
@@ -157,6 +399,18 @@
         <PropertyRef Name="MaterialID" />
       </Principal>
       <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_Material">
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="0..1" />
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Material">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
         <PropertyRef Name="MaterialID" />
       </Dependent>
     </ReferentialConstraint>
@@ -173,12 +427,93 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_MaterialEAN">
+    <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="1" />
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_MaterialEAN">
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PriceFile">
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="1" />
+    <End Role="tbl_PriceFile1" Type="Self.tbl_PriceFile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PriceFile">
+        <PropertyRef Name="EAN13" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile1">
+        <PropertyRef Name="EAN13" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Tender_tbl_Tender">
+    <End Role="tbl_Tender" Type="Self.tbl_Tender" Multiplicity="1" />
+    <End Role="tbl_Tender1" Type="Self.tbl_Tender" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Tender">
+        <PropertyRef Name="TenderID" />
+      </Principal>
+      <Dependent Role="tbl_Tender1">
+        <PropertyRef Name="TenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Vendor">
+    <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="1" />
+    <End Role="tbl_Vendor1" Type="Self.tbl_Vendor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Vendor">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="tbl_Vendor1">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="POSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" />
+    <EntitySet Name="tbl_City" EntityType="Self.tbl_City" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" />
     <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" />
     <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" />
+    <EntitySet Name="tbl_LocationPrice" EntityType="Self.tbl_LocationPrice" />
     <EntitySet Name="tbl_Material" EntityType="Self.tbl_Material" />
     <EntitySet Name="tbl_MaterialEAN" EntityType="Self.tbl_MaterialEAN" />
+    <EntitySet Name="tbl_PriceFile" EntityType="Self.tbl_PriceFile" />
+    <EntitySet Name="tbl_Region" EntityType="Self.tbl_Region" />
+    <EntitySet Name="tbl_Storage" EntityType="Self.tbl_Storage" />
+    <EntitySet Name="tbl_Tender" EntityType="Self.tbl_Tender" />
+    <EntitySet Name="tbl_Terminal" EntityType="Self.tbl_Terminal" />
+    <EntitySet Name="tbl_Vendor" EntityType="Self.tbl_Vendor" />
+    <AssociationSet Name="FK_tbl_Category_tbl_Category" Association="Self.FK_tbl_Category_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Category1" EntitySet="tbl_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_Category" Association="Self.FK_tbl_Material_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_City" Association="Self.FK_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_City1" EntitySet="tbl_City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Company_tbl_City" Association="Self.FK_tbl_Company_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Company" EntitySet="tbl_Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Location_tbl_City" Association="Self.FK_tbl_Location_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vendor_tbl_City" Association="Self.FK_tbl_Vendor_tbl_City">
+      <End Role="tbl_City" EntitySet="tbl_City" />
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Company" Association="Self.FK_tbl_Company">
       <End Role="tbl_Company" EntitySet="tbl_Company" />
       <End Role="tbl_Company1" EntitySet="tbl_Company" />
@@ -187,81 +522,124 @@
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Location1" EntitySet="tbl_Location" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_Storage_tbl_Location" Association="Self.FK_tbl_Storage_tbl_Location">
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+      <End Role="tbl_Storage" EntitySet="tbl_Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Terminal_tbl_Location" Association="Self.FK_tbl_Terminal_tbl_Location">
+      <End Role="tbl_Location" EntitySet="tbl_Location" />
+      <End Role="tbl_Terminal" EntitySet="tbl_Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_LocationPrice_tbl_LocationPrice" Association="Self.FK_tbl_LocationPrice_tbl_LocationPrice">
+      <End Role="tbl_LocationPrice" EntitySet="tbl_LocationPrice" />
+      <End Role="tbl_LocationPrice1" EntitySet="tbl_LocationPrice" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Material" Association="Self.FK_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_Material1" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_Vendor" Association="Self.FK_tbl_Material_tbl_Vendor">
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_MaterialEAN_tbl_Material" Association="Self.FK_tbl_MaterialEAN_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_Material" Association="Self.FK_tbl_PriceFile_tbl_Material">
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_MaterialEAN" Association="Self.FK_tbl_MaterialEAN">
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
       <End Role="tbl_MaterialEAN1" EntitySet="tbl_MaterialEAN" />
     </AssociationSet>
-    <FunctionImport Name="Proc_GetMasterCategory" ReturnType="Collection(POSEntityModel.Proc_GetMasterCategory_Result)">
-      <Parameter Name="CategoryID" Mode="In" Type="String" />
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_MaterialEAN" Association="Self.FK_tbl_PriceFile_tbl_MaterialEAN">
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile" Association="Self.FK_tbl_PriceFile">
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+      <End Role="tbl_PriceFile1" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Tender_tbl_Tender" Association="Self.FK_tbl_Tender_tbl_Tender">
+      <End Role="tbl_Tender" EntitySet="tbl_Tender" />
+      <End Role="tbl_Tender1" EntitySet="tbl_Tender" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Vendor" Association="Self.FK_tbl_Vendor">
+      <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
+      <End Role="tbl_Vendor1" EntitySet="tbl_Vendor" />
+    </AssociationSet>
+    <FunctionImport Name="Proc_GetAllLTerminal" ReturnType="Collection(POSModel.Proc_GetAllLTerminal_Result)" />
+    <FunctionImport Name="Proc_GetMasterTerminal" ReturnType="Collection(POSModel.Proc_GetMasterTerminal_Result)">
+      <Parameter Name="LocationID" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="Proc_GetMasterMaterial" ReturnType="Collection(POSEntityModel.Proc_GetMasterMaterial_Result)">
-      <Parameter Name="MaterialId" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Proc_LoadMasterLocation" ReturnType="Collection(POSEntityModel.Proc_LoadMasterLocation_Result)" />
-    <EntitySet Name="tbl_City" EntityType="POSEntityModel.tbl_City" />
-    <AssociationSet Name="FK_tbl_City" Association="POSEntityModel.FK_tbl_City">
-      <End Role="tbl_City" EntitySet="tbl_City" />
-      <End Role="tbl_City1" EntitySet="tbl_City" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_Company_tbl_City" Association="POSEntityModel.FK_tbl_Company_tbl_City">
-      <End Role="tbl_City" EntitySet="tbl_City" />
-      <End Role="tbl_Company" EntitySet="tbl_Company" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tbl_Location_tbl_City" Association="POSEntityModel.FK_tbl_Location_tbl_City">
-      <End Role="tbl_City" EntitySet="tbl_City" />
-      <End Role="tbl_Location" EntitySet="tbl_Location" />
-    </AssociationSet>
-    <EntitySet Name="tbl_Storage" EntityType="POSEntityModel.tbl_Storage" />
-    <AssociationSet Name="FK_tbl_Storage_tbl_Location" Association="POSEntityModel.FK_tbl_Storage_tbl_Location">
-      <End Role="tbl_Location" EntitySet="tbl_Location" />
-      <End Role="tbl_Storage" EntitySet="tbl_Storage" />
-    </AssociationSet>
-    <FunctionImport Name="Proc_LoadGetStorage" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage_Result)" />
-    <FunctionImport Name="Proc_LoadGetStorage1" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage1_Result)" />
-    <FunctionImport Name="Proc_LoadGetStorage2" ReturnType="Collection(POSEntityModel.Proc_LoadGetStorage2_Result)" />
-    <FunctionImport Name="Proc_LoadGetLocationStorage" ReturnType="Collection(POSEntityModel.Proc_LoadGetLocationStorage_Result)" />
-    <FunctionImport Name="Proc_LoadStorageGetById" ReturnType="Collection(POSEntityModel.Proc_LoadStorageGetById_Result)">
+    <FunctionImport Name="Proc_LoadGetLocationStorage" ReturnType="Collection(POSModel.Proc_LoadGetLocationStorage_Result)" />
+    <FunctionImport Name="Proc_LoadMasterTerminal" ReturnType="Collection(POSModel.Proc_LoadMasterTerminal_Result)" />
+    <FunctionImport Name="Proc_LoadMasterVendor" ReturnType="Collection(POSModel.Proc_LoadMasterVendor_Result)" />
+    <FunctionImport Name="Proc_LoadStorageGetById" ReturnType="Collection(POSModel.Proc_LoadStorageGetById_Result)">
       <Parameter Name="LocationId" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Proc_GetMasterCategory" ReturnType="Collection(POSModel.Proc_GetMasterCategory_Result)">
+      <Parameter Name="CategoryID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Proc_LoadMasterLocation" ReturnType="Collection(POSModel.Proc_LoadMasterLocation_Result)" />
   </EntityContainer>
-  <ComplexType Name="Proc_GetMasterCategory_Result">
-    <Property Type="String" Name="CategoryID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="CategoryDesc" Nullable="true" MaxLength="50" />
+  <ComplexType Name="Proc_GetAllLTerminal_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TerminalID" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <ComplexType Name="Proc_GetMasterMaterial_Result">
-    <Property Type="String" Name="MaterialID" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="MaterialDesc1" Nullable="true" MaxLength="60" />
-    <Property Type="String" Name="MaterialDesc2" Nullable="true" MaxLength="60" />
-    <Property Type="String" Name="MaterialDesc3" Nullable="true" MaxLength="60" />
-    <Property Type="String" Name="ProductURL" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="CategoryID" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="SubCategoryID" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="BaseUOM" Nullable="true" MaxLength="10" />
-    <Property Type="Decimal" Name="Cost" Nullable="true" Precision="18" Scale="3" />
+  <ComplexType Name="Proc_GetMasterTerminal_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="TerminalID" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadGetLocationStorage_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadMasterTerminal_Result">
+    <Property Type="String" Name="TerminalID" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="LocationID" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadMasterVendor_Result">
     <Property Type="String" Name="VendorID" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Name1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Name2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address3" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="POBox" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Contact" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fax" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Region" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
     <Property Type="Int32" Name="CustInt1" Nullable="true" />
     <Property Type="Int32" Name="CustInt2" Nullable="true" />
     <Property Type="Int32" Name="CustInt3" Nullable="true" />
-    <Property Type="DateTime" Name="CustDate1" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="CustDate2" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="CustDate3" Nullable="true" Precision="23" />
     <Property Type="String" Name="CustText1" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="CustText2" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="CustText3" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="UserID" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="AddDate" Nullable="true" />
-    <Property Type="DateTime" Name="UpdDate" Nullable="true" />
-    <Property Type="Int32" Name="Dataid" Nullable="false" />
-    <Property Type="String" Name="Name1" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="SubCategoryDesc" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="Proc_LoadStorageGetById_Result">
+    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_GetMasterCategory_Result">
+    <Property Type="String" Name="CategoryID" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="CategoryDesc" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="Proc_LoadMasterLocation_Result">
@@ -294,113 +672,5 @@
     <Property Type="String" Name="TfrOut" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="RtnVendor" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="PhyCount" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <EntityType Name="tbl_City">
-    <Key>
-      <PropertyRef Name="CityID" />
-    </Key>
-    <Property Name="CityID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_City1" Relationship="POSEntityModel.FK_tbl_City" FromRole="tbl_City" ToRole="tbl_City1" />
-    <NavigationProperty Name="tbl_City2" Relationship="POSEntityModel.FK_tbl_City" FromRole="tbl_City1" ToRole="tbl_City" />
-    <NavigationProperty Name="tbl_Company" Relationship="POSEntityModel.FK_tbl_Company_tbl_City" FromRole="tbl_City" ToRole="tbl_Company" />
-    <NavigationProperty Name="tbl_Location" Relationship="POSEntityModel.FK_tbl_Location_tbl_City" FromRole="tbl_City" ToRole="tbl_Location" />
-  </EntityType>
-  <Association Name="FK_tbl_City">
-    <End Type="POSEntityModel.tbl_City" Role="tbl_City" Multiplicity="1" />
-    <End Type="POSEntityModel.tbl_City" Role="tbl_City1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_City">
-        <PropertyRef Name="CityID" />
-      </Principal>
-      <Dependent Role="tbl_City1">
-        <PropertyRef Name="CityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_Company_tbl_City">
-    <End Type="POSEntityModel.tbl_City" Role="tbl_City" Multiplicity="0..1" />
-    <End Type="POSEntityModel.tbl_Company" Role="tbl_Company" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_City">
-        <PropertyRef Name="CityID" />
-      </Principal>
-      <Dependent Role="tbl_Company">
-        <PropertyRef Name="City" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tbl_Location_tbl_City">
-    <End Type="POSEntityModel.tbl_City" Role="tbl_City" Multiplicity="0..1" />
-    <End Type="POSEntityModel.tbl_Location" Role="tbl_Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_City">
-        <PropertyRef Name="CityID" />
-      </Principal>
-      <Dependent Role="tbl_Location">
-        <PropertyRef Name="City" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="tbl_Storage">
-    <Key>
-      <PropertyRef Name="StorageID" />
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="StorageID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="StorageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StorageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="tbl_Location" Relationship="POSEntityModel.FK_tbl_Storage_tbl_Location" FromRole="tbl_Storage" ToRole="tbl_Location" />
-  </EntityType>
-  <Association Name="FK_tbl_Storage_tbl_Location">
-    <End Type="POSEntityModel.tbl_Location" Role="tbl_Location" Multiplicity="1" />
-    <End Type="POSEntityModel.tbl_Storage" Role="tbl_Storage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbl_Location">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="tbl_Storage">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <ComplexType Name="Proc_LoadGetStorage_Result">
-    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="LocationID1" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="Proc_LoadGetStorage1_Result">
-    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="Proc_LoadGetStorage2_Result">
-    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="Proc_LoadGetLocationStorage_Result">
-    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="Proc_LoadStorageGetById_Result">
-    <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="LocationDesc" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageID" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="StorageName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="StorageType" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

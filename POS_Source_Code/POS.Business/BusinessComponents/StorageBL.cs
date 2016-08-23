@@ -304,8 +304,8 @@ namespace POS.Business.BusinessComponents
             {
                 LoadGetStorage = Context.GetStorageById(LocationID).ToList();
                 locStorageModel = new LocationStorageModel();
-
-                locStorageModel.LocationID = LoadGetStorage.FirstOrDefault().LocationID;
+                locStorageModel.Storages = this.GetByID(LocationID);
+                locStorageModel.LocationID= LoadGetStorage.FirstOrDefault().LocationID;
                 locStorageModel.LocationDesc = LoadGetStorage.FirstOrDefault().LocationDesc;
                 return locStorageModel;
             }

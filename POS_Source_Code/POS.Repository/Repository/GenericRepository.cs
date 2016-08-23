@@ -12,6 +12,7 @@ using System.Data;
 using System.Data.Entity;
 using POS.Entity.Entities;
 
+
 namespace POS.Repository
 {
     ///Created by Srikanth Kotnala on 8/4/2016

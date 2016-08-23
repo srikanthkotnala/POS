@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace POS.Web.Controllers
 {
@@ -34,14 +35,47 @@ namespace POS.Web.Controllers
         /// <returns></returns>
         public PartialViewResult GetLocationByID(string locationID)
         {
+            LocationModel LM = new LocationModel();
             tbl_Location location = LocationBL.GetByID(locationID.Trim());
-            return PartialView("~/Views/Location/Partial/_LocationDetailsPartial.cshtml", location);
+            LM.LocationID = location.LocationID;
+            LM.LocationDesc = location.LocationDesc;
+            LM.Address1 = location.Address1;
+            LM.Address2 = location.Address2;
+            LM.Address3 = location.Address3;
+            LM.POBox = location.POBox;
+            LM.Contact = location.Contact;
+            LM.Phone = location.Phone;
+            LM.Fax = location.Fax;
+            LM.Email = location.Email;
+            LM.City = location.City;
+            LM.Region = location.Region;
+            LM.Country = location.Country;
+            LM.BusinessArea = location.BusinessArea;
+            LM.FieldArea = location.FieldArea;
+            LM.CashLoan = location.CashLoan;
+
+            return PartialView("~/Views/Location/Partial/_LocationDetailsPartial.cshtml", LM);
         }
 
-        public string InsertOrUpdateLocation(tbl_Location location)
+        public string InsertOrUpdateLocation(LocationModel LM)
         {
-            LocationModel LM = new LocationModel();
+            tbl_Location location = new tbl_Location();
             location.LocationID = LM.LocationID;
+            location.LocationDesc = LM.LocationDesc;
+            location.Address1 = LM.Address1;
+            location.Address2 = LM.Address2;
+            location.Address3 = LM.Address3;
+            location.POBox = LM.POBox;
+            location.Contact = LM.Contact;
+            location.Phone = LM.Phone;
+            location.Fax = LM.Fax;
+            location.Email = LM.Email;
+            location.City = LM.City;
+            location.Region = LM.Region;
+            location.Country = LM.Country;
+            location.BusinessArea = LM.BusinessArea;
+            location.FieldArea = LM.FieldArea;
+            location.CashLoan = LM.CashLoan;
             return LocationBL.InsertOrUpdate(location);
         }
     }

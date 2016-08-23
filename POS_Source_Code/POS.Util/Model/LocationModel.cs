@@ -10,7 +10,6 @@ namespace POS.Util.Model
 {
     public class LocationModel
     {
-        [Key]
         [Required(ErrorMessage = "* Please Enter LocationID")]
         public string LocationID { get; set; }
 

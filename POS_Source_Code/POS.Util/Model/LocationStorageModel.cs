@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using POS.Entity.Entities;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Util.Model
 {
   public  class LocationStorageModel
     {
-        public string LocationID{ get; set; }
+        [Required(ErrorMessage = "* Please Select Storage ID")]
+        public string StorageID { get; set; }
+
+        [Required(ErrorMessage = "* Please Enter Location ID")]
+        public string LocationID { get; set; }
+
         public string LocationDesc{ get; set; }
 
         public List<Proc_LoadGetLocationStorage_Result> StorageLocation;

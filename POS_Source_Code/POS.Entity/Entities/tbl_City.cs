@@ -19,6 +19,7 @@ namespace POS.Entity.Entities
         {
             this.tbl_Company = new HashSet<tbl_Company>();
             this.tbl_Location = new HashSet<tbl_Location>();
+            this.tbl_Vendor = new HashSet<tbl_Vendor>();
         }
     
         public string CityID { get; set; }
@@ -30,5 +31,7 @@ namespace POS.Entity.Entities
         public virtual ICollection<tbl_Company> tbl_Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Location> tbl_Location { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Vendor> tbl_Vendor { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace POS.Entity.Entities
         public tbl_Material()
         {
             this.tbl_MaterialEAN = new HashSet<tbl_MaterialEAN>();
+            this.tbl_PriceFile = new HashSet<tbl_PriceFile>();
         }
     
         public string MaterialID { get; set; }
@@ -44,9 +45,13 @@ namespace POS.Entity.Entities
         public Nullable<System.DateTime> UpdDate { get; set; }
         public int Dataid { get; set; }
     
+        public virtual tbl_Category tbl_Category { get; set; }
         public virtual tbl_Material tbl_Material1 { get; set; }
         public virtual tbl_Material tbl_Material2 { get; set; }
+        public virtual tbl_Vendor tbl_Vendor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PriceFile> tbl_PriceFile { get; set; }
     }
 }

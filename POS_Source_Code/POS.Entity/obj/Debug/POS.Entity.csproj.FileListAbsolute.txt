@@ -19,6 +19,5 @@ C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\bin\Debug\Ent
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\bin\Debug\EntityFramework.xml
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\obj\Debug\POS.Entity.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\obj\Debug\POS.Entity.dll
 C:\Users\Admin\Documents\GitHub\POS\POS\POS_Source_Code\POS.Entity\obj\Debug\POS.Entity.pdb

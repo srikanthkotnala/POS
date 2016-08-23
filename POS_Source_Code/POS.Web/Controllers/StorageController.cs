@@ -35,16 +35,20 @@ namespace POS.Web.Controllers
         //    return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", storageGetById);
         //}
 
-        public string InsertOrUpdateStorage(tbl_Storage storage)
+        public string InsertOrUpdateStorage(LocationStorageModel LSM)
         {
+            tbl_Storage storage = new tbl_Storage();
+            storage.LocationID = LSM.LocationID;
+            storage.StorageID = LSM.StorageID;
             return StorageBL.InsertOrUpdate(storage);
         }
 
         public PartialViewResult GetStorageById(string LocationID)
         {
+         
             LocationStorageModel LocationStorage = new LocationStorageModel();
             LocationStorage= StorageBL.GetStorageById(LocationID);
-            LocationStorage.Storages= StorageBL.GetByID(LocationID);
+           
             return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", LocationStorage);
         }
         public PartialViewResult GetStorageId(string locationID)

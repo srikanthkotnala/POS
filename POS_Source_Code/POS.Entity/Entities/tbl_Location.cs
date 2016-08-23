@@ -18,6 +18,7 @@ namespace POS.Entity.Entities
         public tbl_Location()
         {
             this.tbl_Storage = new HashSet<tbl_Storage>();
+            this.tbl_Terminal = new HashSet<tbl_Terminal>();
         }
     
         public string LocationID { get; set; }
@@ -50,10 +51,12 @@ namespace POS.Entity.Entities
         public string RtnVendor { get; set; }
         public string PhyCount { get; set; }
     
+        public virtual tbl_City tbl_City { get; set; }
         public virtual tbl_Location tbl_Location1 { get; set; }
         public virtual tbl_Location tbl_Location2 { get; set; }
-        public virtual tbl_City tbl_City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Storage> tbl_Storage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_Terminal> tbl_Terminal { get; set; }
     }
 }
