@@ -38,14 +38,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Country">
-      <EntityTypeMapping TypeName="POSModel.tbl_Country">
-        <MappingFragment StoreEntitySet="tbl_Country">
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_Location">
       <EntityTypeMapping TypeName="POSModel.tbl_Location">
         <MappingFragment StoreEntitySet="tbl_Location">
@@ -140,14 +132,6 @@
           <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
           <ScalarProperty Name="UOM" ColumnName="UOM" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_Region">
-      <EntityTypeMapping TypeName="POSModel.tbl_Region">
-        <MappingFragment StoreEntitySet="tbl_Region">
-          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
-          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -325,5 +309,117 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_SubCategory">
+      <EntityTypeMapping TypeName="POSModel.tbl_SubCategory">
+        <MappingFragment StoreEntitySet="tbl_SubCategory">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="SubCategoryDesc" ColumnName="SubCategoryDesc" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Material_Temp">
+      <EntityTypeMapping TypeName="POSModel.tbl_Material_Temp">
+        <MappingFragment StoreEntitySet="tbl_Material_Temp">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CustText3" ColumnName="CustText3" />
+          <ScalarProperty Name="CustText2" ColumnName="CustText2" />
+          <ScalarProperty Name="CustText1" ColumnName="CustText1" />
+          <ScalarProperty Name="CustDate3" ColumnName="CustDate3" />
+          <ScalarProperty Name="CustDate2" ColumnName="CustDate2" />
+          <ScalarProperty Name="CustDate1" ColumnName="CustDate1" />
+          <ScalarProperty Name="CustInt3" ColumnName="CustInt3" />
+          <ScalarProperty Name="CustInt2" ColumnName="CustInt2" />
+          <ScalarProperty Name="CustInt1" ColumnName="CustInt1" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="BaseUOM" ColumnName="BaseUOM" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
+          <ScalarProperty Name="MaterialDesc3" ColumnName="MaterialDesc3" />
+          <ScalarProperty Name="MaterialDesc2" ColumnName="MaterialDesc2" />
+          <ScalarProperty Name="MaterialDesc1" ColumnName="MaterialDesc1" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_MaterialEAN_Temp">
+      <EntityTypeMapping TypeName="POSModel.tbl_MaterialEAN_Temp">
+        <MappingFragment StoreEntitySet="tbl_MaterialEAN_Temp">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="MaterialMix" ColumnName="MaterialMix" />
+          <ScalarProperty Name="BaseUOM" ColumnName="BaseUOM" />
+          <ScalarProperty Name="ConvertValue" ColumnName="ConvertValue" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PreferUOM">
+      <EntityTypeMapping TypeName="POSModel.tbl_PreferUOM">
+        <MappingFragment StoreEntitySet="tbl_PreferUOM">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="Conv" ColumnName="Conv" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PreferUOM_Temp">
+      <EntityTypeMapping TypeName="POSModel.tbl_PreferUOM_Temp">
+        <MappingFragment StoreEntitySet="tbl_PreferUOM_Temp">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="Conv" ColumnName="Conv" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PriceFile_Temp">
+      <EntityTypeMapping TypeName="POSModel.tbl_PriceFile_Temp">
+        <MappingFragment StoreEntitySet="tbl_PriceFile_Temp">
+          <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
+          <ScalarProperty Name="EAN13" ColumnName="EAN13" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UOM">
+      <EntityTypeMapping TypeName="POSModel.tbl_UOM">
+        <MappingFragment StoreEntitySet="tbl_UOM">
+          <ScalarProperty Name="UOMDesc" ColumnName="UOMDesc" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Country">
+      <EntityTypeMapping TypeName="POSModel.tbl_Country">
+        <MappingFragment StoreEntitySet="tbl_Country">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Region">
+      <EntityTypeMapping TypeName="POSModel.tbl_Region">
+        <MappingFragment StoreEntitySet="tbl_Region">
+          <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

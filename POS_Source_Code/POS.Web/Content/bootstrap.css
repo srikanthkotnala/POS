@@ -1688,7 +1688,7 @@ a:active {
 }
 a:hover {
   text-decoration: none;
-  color: #7ac1e6;
+  
 }
 a[href^="tel:"],
 a[href^="callto:"] {
@@ -4232,7 +4232,7 @@ fieldset[disabled] .btn-default:focus.active {
 }
 .btn-default:hover {
   color: #ffffff;
-  background-color: #7ac1e6;
+  background-color: #0a92da;
   border-color: #7ac1e6;
 }
 .btn-default:hover:active,
@@ -4445,10 +4445,9 @@ fieldset[disabled] .btn-success:focus.active {
   background-color: #8ccceb;
   border-color: #8ccceb;
 }
-.btn-info:active,
-.btn-info.active,
-.open > .dropdown-toggle.btn-info {
-  background-image: none;
+.btn-danger:hover {
+    background-color: #e20303;
+    color: white;
 }
 .btn-info.disabled,
 .btn-info[disabled],

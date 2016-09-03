@@ -45,7 +45,7 @@
     $("#btnNewTerminal").click(function () {
         var locID = $(this).attr('data-LocationID');
         $.ajax({
-            url: '../Terminal/GetTerminalId',
+            url: '../Terminal/GetLocationById',
             data: { 'locationID': null },
             type: "post",
             cache: false,

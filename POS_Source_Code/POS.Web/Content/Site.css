@@ -29,6 +29,7 @@ textarea {
 
 .pad_1per {
     padding-left: 1%;
+    color: #bcbcbc;
 }
 
 .mar_top_1per {
@@ -38,6 +39,11 @@ textarea {
 .stre_maxWth {
     width: 100%;
     max-width: 410px !important;
+}
+
+.btn-danger:hover {
+    background-color: #e20303;
+    color: white;
 }
 
 .pad_0 {
@@ -50,76 +56,106 @@ textarea {
 }
 
 .font_med {
-    font-size: medium;
+    font-size: 24px;
 }
 
-.bg_blue:hover {
-    color: #ffffff;
-    background-color: #7ac1e6;
-}
-.ht40{
-    height:40px;
+.bg_blue {
+    padding: 5px;
+    color: black;
+    padding: 5px 5px 5px;
+    width: 100%;
 }
 
-.pointer{
- cursor: pointer;
+    .bg_blue:hover {
+        color: #ffffff;
+        background-color: #7ac1e6;
+    }
+
+.ht40 {
+    height: 40px;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .pad_1perdiv > div {
     padding: 0.5%;
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
-.ovrflow{
-    max-height:623px;
-    overflow-y:auto
+
+.ovrflow {
+    max-height: 623px;
+    overflow-y: auto;
 }
-.bckcolor_green{
+
+.bckcolor_green {
     background-color: green;
 }
-.mrg_left_5per{
-    margin-left:5%
+
+.mrg_left_5per {
+    margin-left: 5%;
 }
-.pad_2per{
-    padding:2%
+
+.pad_2per {
+    padding: 2%;
 }
-.btn_inpt_sumbit{
-    background-color: #7ac1e6; 
+
+.btn_inpt_sumbit {
+    background-color: #7ac1e6;
     color: white;
-    float:none
+    float: none;
 }
-.btn_inpt_cancel{
+
+.btn_inpt_cancel {
     background-color: #e45b5b;
-     color: white;
-     float:none
+    color: white;
+    float: none;
 }
+
 input {
-        font-size: medium;
-        color: black;
-    }
-.err_mgs{
-        color: red;
+    font-size: medium;
+    color: black;
+}
+
+.err_mgs {
+    color: red;
     font-size: 15px;
     font-weight: 500;
 }
-.stng_text{
+
+.stng_text {
     text-align: center;
     color: black;
-    font-weight: bold;
-    font-size: 15px;
-    text-transform:uppercase;
+    font-size: 14px;
+    text-transform: uppercase;
 }
-.stng_text:hover{
-    background-color: #7ac1e6;
-}
-.stng_Hdr{
+
+    .stng_text:hover {
+        background-color: #7ac1e6;
+    }
+
+.stng_Hdr {
     color: white;
     font-size: 20px;
-    background-color: #7193c7;
+    background-color: #7ac1e6;
     font-weight: bold;
 }
-.ovrflow_Stng{
-    max-height:837px;
-    overflow-y:auto
+
+.ovrflow_Stng {
+    max-height: 837px;
+    overflow-y: auto;
 }
+
+.hed_add {
+    font-size: 25px;
+}
+
+.spn_lebl {
+    font-size: 14px;
+    color: #464646;
+}
+

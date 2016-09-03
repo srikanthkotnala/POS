@@ -14,7 +14,7 @@ namespace POS.Entity.Entities
     
     public partial class tbl_Region
     {
-        public string RegionID { get; set; }
+        public int RegionID { get; set; }
         public string RegionName { get; set; }
     }
 }

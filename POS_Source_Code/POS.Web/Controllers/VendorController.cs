@@ -60,7 +60,7 @@ namespace POS.Web.Controllers
             Vendor.City = VM.City;
             Vendor.Region = VM.Region;
             Vendor.Country = VM.Country;
-            return VendorBL.InsertOrUpdate(Vendor);
+            return VendorBL.InsertOrUpdate(VM);
         }
     }
 }

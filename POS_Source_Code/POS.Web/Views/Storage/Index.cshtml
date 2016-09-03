@@ -13,17 +13,17 @@
     <h2 class="pad_1per ">Storage <button id="btnSNewStore" title="Add New Store!" class="btn btn-default pull-right mar_top_1per bckcolor_green" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></h2>
 </div>
 <div class="col-lg-12 mgn_0">
-    <div class="col-lg-4 noPadBrd">
+    <div class="col-lg-3 noPadBrd">
         <div class="input-group col-lg-12 ">
-            <input id="txtSLocationSearch" type="text" class="form-control col-lg-12 stre_maxWth font_med ht40" placeholder="Search for  Store / Location / LocationID">
+            <input id="txtSLocationSearch" type="text" class="form-control col-lg-12 stre_maxWth  ht40" placeholder="Search for  Store / Location / LocationID">
         </div>
         <div class="ovrflow_Stng">
             @if (Model != null)
             {
                 foreach (Proc_LoadGetLocationStorage_Result location in Model.StorageLocation)
                 {
-                    <div class="SlocData pad_1per" >
-                        <a class="pointer MasterSStore" data-SLocationID="@location.LocationID" data-SCity="@location.City"><h3 class="bg_blue">@location.LocationDesc</h3></a>
+                    <div class="SlocData pad_1per bg_blue" >
+                        <a class="pointer MasterSStore" data-SLocationID="@location.LocationID" data-SCity="@location.City"><span class="bg_blue">@location.LocationDesc</span></a>
                     </div>
                 }
                 <small id="NoRecords" class="lead" style="display:none">

@@ -38,7 +38,7 @@
     <Key>
       <PropertyRef Name="CountryID" />
     </Key>
-    <Property Name="CountryID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Location">
@@ -114,6 +114,37 @@
     <Property Name="UpdDate" Type="date" />
     <Property Name="Dataid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_Material_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaterialDesc1" Type="nvarchar" MaxLength="60" />
+    <Property Name="MaterialDesc2" Type="nvarchar" MaxLength="60" />
+    <Property Name="MaterialDesc3" Type="nvarchar" MaxLength="60" />
+    <Property Name="ProductURL" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="20" />
+    <Property Name="SubCategoryID" Type="nvarchar" MaxLength="20" />
+    <Property Name="BaseUOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Cost" Type="numeric" Precision="18" Scale="3" />
+    <Property Name="VendorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustInt1" Type="int" />
+    <Property Name="CustInt2" Type="int" />
+    <Property Name="CustInt3" Type="int" />
+    <Property Name="CustDate1" Type="datetime" />
+    <Property Name="CustDate2" Type="datetime" />
+    <Property Name="CustDate3" Type="datetime" />
+    <Property Name="CustText1" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText2" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustText3" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddDate" Type="date" />
+    <Property Name="UpdDate" Type="date" />
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbl_MaterialEAN">
     <Key>
       <PropertyRef Name="EAN13" />
@@ -125,6 +156,44 @@
     <Property Name="BaseUOM" Type="nvarchar" MaxLength="10" />
     <Property Name="MaterialMix" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <EntityType Name="tbl_MaterialEAN_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="ConvertValue" Type="numeric" Precision="18" Scale="3" />
+    <Property Name="BaseUOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="MaterialMix" Type="nvarchar" MaxLength="30" />
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_PreferUOM">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Conv" Type="numeric" Precision="18" Scale="3" />
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_PreferUOM_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Conv" Type="numeric" Precision="18" Scale="3" />
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbl_PriceFile">
     <Key>
       <PropertyRef Name="EAN13" />
@@ -134,11 +203,24 @@
     <Property Name="UOM" Type="nvarchar" MaxLength="10" />
     <Property Name="Price" Type="numeric" Precision="18" Scale="5" />
   </EntityType>
+  <EntityType Name="tbl_PriceFile_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EAN13" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialID" Type="nvarchar" MaxLength="30" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+    <Property Name="Price" Type="numeric" Precision="18" Scale="5" />
+    <Property Name="TerminalID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbl_Region">
     <Key>
       <PropertyRef Name="RegionID" />
     </Key>
-    <Property Name="RegionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Storage">
@@ -150,6 +232,14 @@
     <Property Name="StorageName" Type="nvarchar" MaxLength="50" />
     <Property Name="StorageType" Type="nvarchar" MaxLength="50" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+    </Key>
+    <Property Name="SubCategoryID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SubCategoryDesc" Type="nvarchar" MaxLength="60" />
+    <Property Name="CategoryID" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="tbl_Tender">
     <Key>
@@ -167,6 +257,13 @@
     </Key>
     <Property Name="TerminalID" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="LocationID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_UOM">
+    <Key>
+      <PropertyRef Name="UOM" />
+    </Key>
+    <Property Name="UOM" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="UOMDesc" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_Vendor">
     <Key>
@@ -303,6 +400,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_Material_tbl_SubCategory">
+    <End Role="tbl_SubCategory" Type="Self.tbl_SubCategory" Multiplicity="0..1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Material_tbl_UOM">
+    <End Role="tbl_UOM" Type="Self.tbl_UOM" Multiplicity="0..1" />
+    <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="BaseUOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Material_tbl_Vendor">
     <End Role="tbl_Vendor" Type="Self.tbl_Vendor" Multiplicity="1" />
     <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="*" />
@@ -327,6 +448,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_MaterialEAN_tbl_BaseUOM">
+    <End Role="tbl_UOM" Type="Self.tbl_UOM" Multiplicity="0..1" />
+    <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="BaseUOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_MaterialEAN_tbl_Material">
     <End Role="tbl_Material" Type="Self.tbl_Material" Multiplicity="0..1" />
     <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="*" />
@@ -335,6 +468,42 @@
         <PropertyRef Name="MaterialID" />
       </Principal>
       <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_MaterialEAN_tbl_UOM">
+    <End Role="tbl_UOM" Type="Self.tbl_UOM" Multiplicity="0..1" />
+    <End Role="tbl_MaterialEAN" Type="Self.tbl_MaterialEAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PreferUOM">
+    <End Role="tbl_PreferUOM" Type="Self.tbl_PreferUOM" Multiplicity="1" />
+    <End Role="tbl_PreferUOM1" Type="Self.tbl_PreferUOM" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PreferUOM">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PreferUOM1">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PreferUOM_tbl_Material">
+    <End Role="tbl_PreferUOM" Type="Self.tbl_PreferUOM" Multiplicity="1" />
+    <End Role="tbl_PreferUOM1" Type="Self.tbl_PreferUOM" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PreferUOM">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PreferUOM1">
         <PropertyRef Name="MaterialID" />
       </Dependent>
     </ReferentialConstraint>
@@ -375,6 +544,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_UOM">
+    <End Role="tbl_UOM" Type="Self.tbl_UOM" Multiplicity="0..1" />
+    <End Role="tbl_PriceFile" Type="Self.tbl_PriceFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Storage_tbl_Location">
     <End Role="tbl_Location" Type="Self.tbl_Location" Multiplicity="1" />
     <End Role="tbl_Storage" Type="Self.tbl_Storage" Multiplicity="*" />
@@ -384,6 +565,30 @@
       </Principal>
       <Dependent Role="tbl_Storage">
         <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SubCategory">
+    <End Role="tbl_SubCategory" Type="Self.tbl_SubCategory" Multiplicity="1" />
+    <End Role="tbl_SubCategory1" Type="Self.tbl_SubCategory" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SubCategory1">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SubCategory_tbl_Category">
+    <End Role="tbl_Category" Type="Self.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_SubCategory" Type="Self.tbl_SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SubCategory">
+        <PropertyRef Name="CategoryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -408,6 +613,18 @@
       </Principal>
       <Dependent Role="tbl_Terminal">
         <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_UOM">
+    <End Role="tbl_UOM" Type="Self.tbl_UOM" Multiplicity="1" />
+    <End Role="tbl_UOM1" Type="Self.tbl_UOM" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_UOM1">
+        <PropertyRef Name="UOM" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -457,12 +674,19 @@
     <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_LocationPrice" EntityType="Self.tbl_LocationPrice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Material" EntityType="Self.tbl_Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Material_Temp" EntityType="Self.tbl_Material_Temp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_MaterialEAN" EntityType="Self.tbl_MaterialEAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_MaterialEAN_Temp" EntityType="Self.tbl_MaterialEAN_Temp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PreferUOM" EntityType="Self.tbl_PreferUOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PreferUOM_Temp" EntityType="Self.tbl_PreferUOM_Temp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_PriceFile" EntityType="Self.tbl_PriceFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PriceFile_Temp" EntityType="Self.tbl_PriceFile_Temp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Region" EntityType="Self.tbl_Region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Storage" EntityType="Self.tbl_Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_SubCategory" EntityType="Self.tbl_SubCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Tender" EntityType="Self.tbl_Tender" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Terminal" EntityType="Self.tbl_Terminal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UOM" EntityType="Self.tbl_UOM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Vendor" EntityType="Self.tbl_Vendor" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_tbl_Category_tbl_Category" Association="Self.FK_tbl_Category_tbl_Category">
       <End Role="tbl_Category" EntitySet="tbl_Category" />
@@ -500,6 +724,14 @@
       <End Role="tbl_Category" EntitySet="tbl_Category" />
       <End Role="tbl_Material" EntitySet="tbl_Material" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_SubCategory" Association="Self.FK_tbl_Material_tbl_SubCategory">
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_UOM" Association="Self.FK_tbl_Material_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Material_tbl_Vendor" Association="Self.FK_tbl_Material_tbl_Vendor">
       <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />
       <End Role="tbl_Material" EntitySet="tbl_Material" />
@@ -508,9 +740,25 @@
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
       <End Role="tbl_MaterialEAN1" EntitySet="tbl_MaterialEAN" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_MaterialEAN_tbl_BaseUOM" Association="Self.FK_tbl_MaterialEAN_tbl_BaseUOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_MaterialEAN_tbl_Material" Association="Self.FK_tbl_MaterialEAN_tbl_Material">
       <End Role="tbl_Material" EntitySet="tbl_Material" />
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_MaterialEAN_tbl_UOM" Association="Self.FK_tbl_MaterialEAN_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PreferUOM" Association="Self.FK_tbl_PreferUOM">
+      <End Role="tbl_PreferUOM" EntitySet="tbl_PreferUOM" />
+      <End Role="tbl_PreferUOM1" EntitySet="tbl_PreferUOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PreferUOM_tbl_Material" Association="Self.FK_tbl_PreferUOM_tbl_Material">
+      <End Role="tbl_PreferUOM" EntitySet="tbl_PreferUOM" />
+      <End Role="tbl_PreferUOM1" EntitySet="tbl_PreferUOM" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_PriceFile" Association="Self.FK_tbl_PriceFile">
       <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
@@ -524,9 +772,21 @@
       <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
       <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
     </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_UOM" Association="Self.FK_tbl_PriceFile_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Storage_tbl_Location" Association="Self.FK_tbl_Storage_tbl_Location">
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Storage" EntitySet="tbl_Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SubCategory" Association="Self.FK_tbl_SubCategory">
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
+      <End Role="tbl_SubCategory1" EntitySet="tbl_SubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SubCategory_tbl_Category" Association="Self.FK_tbl_SubCategory_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_Tender_tbl_Tender" Association="Self.FK_tbl_Tender_tbl_Tender">
       <End Role="tbl_Tender" EntitySet="tbl_Tender" />
@@ -535,6 +795,10 @@
     <AssociationSet Name="FK_tbl_Terminal_tbl_Location" Association="Self.FK_tbl_Terminal_tbl_Location">
       <End Role="tbl_Location" EntitySet="tbl_Location" />
       <End Role="tbl_Terminal" EntitySet="tbl_Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_UOM" Association="Self.FK_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_UOM1" EntitySet="tbl_UOM" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_Vendor" Association="Self.FK_tbl_Vendor">
       <End Role="tbl_Vendor" EntitySet="tbl_Vendor" />

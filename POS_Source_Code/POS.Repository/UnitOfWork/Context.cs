@@ -172,7 +172,73 @@ namespace POS.Repository.UnitOfWork
                 this.region = new GenericRepository<tbl_Region>(EntityConstant.POS);
             }
         }
+        public GenericRepository<tbl_Category> category;
+        public GenericRepository<tbl_Category> Category
+        {
+            get
+            {
+                if(category==null)
+                {
+                    this.category = new GenericRepository<tbl_Category>(EntityConstant.POS);
+                }
+                return category;
+            }
+            set
+            {
+                this.category = new GenericRepository<tbl_Category>(EntityConstant.POS);
+            }
+        }
 
+        public GenericRepository<tbl_Material> material;
+        public GenericRepository<tbl_Material> Material
+        {
+            get
+            {
+                if(material==null)
+                {
+                    this.material = new GenericRepository<tbl_Material>(EntityConstant.POS);
+                }
+                return material;
+            }
+            set
+            {
+                this.material = new GenericRepository<tbl_Material>(EntityConstant.POS);
+            }
+            
+        }
+
+        public GenericRepository<tbl_SubCategory> subcategory;
+        public GenericRepository<tbl_SubCategory> SubCategory
+        {
+            get
+            {
+                if(subcategory==null)
+                {
+                    this.subcategory = new GenericRepository<tbl_SubCategory>(EntityConstant.POS);
+                }
+                return subcategory;
+            }
+            set
+            {
+                this.subcategory = new GenericRepository<tbl_SubCategory>(EntityConstant.POS);
+            }
+        }
+        public GenericRepository<tbl_UOM> uom;
+        public GenericRepository<tbl_UOM> UOM
+        {
+            get
+            {
+                if(uom==null)
+                {
+                    this.uom = new GenericRepository<tbl_UOM>(EntityConstant.POS);
+                }
+                return uom;
+            }
+            set
+            {
+                this.uom = new GenericRepository<tbl_UOM>(EntityConstant.POS);
+            }
+        }
 
         #endregion
 

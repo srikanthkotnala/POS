@@ -115,7 +115,7 @@ namespace POS.Business.BusinessComponents
             try
             {
                 Context.Terminal.Update(terminal);
-                Context.Location.Save();
+                Context.Terminal.Save();
                 return terminal.LocationID + " Updated Successfully!!";
             }
             catch (Exception ex)

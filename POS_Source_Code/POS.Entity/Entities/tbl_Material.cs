@@ -53,5 +53,7 @@ namespace POS.Entity.Entities
         public virtual ICollection<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PriceFile> tbl_PriceFile { get; set; }
+        public virtual tbl_SubCategory tbl_SubCategory { get; set; }
+        public virtual tbl_UOM tbl_UOM { get; set; }
     }
 }

@@ -224,13 +224,21 @@ namespace POS.Business.BusinessComponents
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public string InsertOrUpdate(tbl_Vendor Vendor)
+        public string InsertOrUpdate(VendorModel VM)
         {
-
-            tbl_Vendor CurrentVendor = this.GetByID(Vendor.VendorID);
-
             string result = string.Empty;
-            if (CurrentVendor == null || CurrentVendor.VendorID==null)
+            bool IsExist = false;
+            tbl_Vendor Vendor;
+            Vendor = this.GetByID(VM.VendorID);
+            if(Vendor!=null)
+            {
+                IsExist = true;
+            }
+            else
+            {
+                Vendor = new tbl_Vendor();
+            }
+            if (!IsExist)
             {
                 return result = this.Insert(Vendor);
             }

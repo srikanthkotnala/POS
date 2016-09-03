@@ -30,17 +30,24 @@ namespace POS.Entity.Entities
         public virtual DbSet<tbl_Category> tbl_Category { get; set; }
         public virtual DbSet<tbl_City> tbl_City { get; set; }
         public virtual DbSet<tbl_Company> tbl_Company { get; set; }
-        public virtual DbSet<tbl_Country> tbl_Country { get; set; }
         public virtual DbSet<tbl_Location> tbl_Location { get; set; }
         public virtual DbSet<tbl_LocationPrice> tbl_LocationPrice { get; set; }
         public virtual DbSet<tbl_Material> tbl_Material { get; set; }
         public virtual DbSet<tbl_MaterialEAN> tbl_MaterialEAN { get; set; }
         public virtual DbSet<tbl_PriceFile> tbl_PriceFile { get; set; }
-        public virtual DbSet<tbl_Region> tbl_Region { get; set; }
         public virtual DbSet<tbl_Storage> tbl_Storage { get; set; }
         public virtual DbSet<tbl_Tender> tbl_Tender { get; set; }
         public virtual DbSet<tbl_Terminal> tbl_Terminal { get; set; }
         public virtual DbSet<tbl_Vendor> tbl_Vendor { get; set; }
+        public virtual DbSet<tbl_SubCategory> tbl_SubCategory { get; set; }
+        public virtual DbSet<tbl_Material_Temp> tbl_Material_Temp { get; set; }
+        public virtual DbSet<tbl_MaterialEAN_Temp> tbl_MaterialEAN_Temp { get; set; }
+        public virtual DbSet<tbl_PreferUOM> tbl_PreferUOM { get; set; }
+        public virtual DbSet<tbl_PreferUOM_Temp> tbl_PreferUOM_Temp { get; set; }
+        public virtual DbSet<tbl_PriceFile_Temp> tbl_PriceFile_Temp { get; set; }
+        public virtual DbSet<tbl_UOM> tbl_UOM { get; set; }
+        public virtual DbSet<tbl_Country> tbl_Country { get; set; }
+        public virtual DbSet<tbl_Region> tbl_Region { get; set; }
     
         public virtual ObjectResult<Proc_GetAllLTerminal_Result> Proc_GetAllLTerminal()
         {

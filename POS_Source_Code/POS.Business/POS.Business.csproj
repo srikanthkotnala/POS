@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessComponents\CategoryBL.cs" />
     <Compile Include="BusinessComponents\LocationBL.cs" />
+    <Compile Include="BusinessComponents\MaterialBL.cs" />
     <Compile Include="BusinessComponents\StorageBL.cs" />
     <Compile Include="BusinessComponents\TerminalBL.cs" />
     <Compile Include="BusinessComponents\VendorBL.cs" />
+    <Compile Include="Interface\ICategory.cs" />
     <Compile Include="Interface\ILocation.cs" />
+    <Compile Include="Interface\IMaterial.cs" />
     <Compile Include="Interface\IStorage.cs" />
     <Compile Include="Interface\ITerminal.cs" />
     <Compile Include="Interface\IVendor.cs" />

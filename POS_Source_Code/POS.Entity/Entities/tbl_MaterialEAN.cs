@@ -25,5 +25,7 @@ namespace POS.Entity.Entities
         public virtual tbl_MaterialEAN tbl_MaterialEAN1 { get; set; }
         public virtual tbl_MaterialEAN tbl_MaterialEAN2 { get; set; }
         public virtual tbl_PriceFile tbl_PriceFile { get; set; }
+        public virtual tbl_UOM tbl_UOM { get; set; }
+        public virtual tbl_UOM tbl_UOM1 { get; set; }
     }
 }

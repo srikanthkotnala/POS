@@ -194,14 +194,38 @@ namespace POS.Business.BusinessComponents
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public string InsertOrUpdate(tbl_Location location)
+        public string InsertOrUpdate(LocationModel LM)
         {
-            
-            tbl_Location CurrentLocation = this.GetByID(location.LocationID.Trim());
-            
             string result = string.Empty;
-            if (CurrentLocation == null)
+            bool isExist = false;
+            tbl_Location location;
+            location = this.GetByID(LM.LocationID.Trim());
+            if (location != null)
             {
+                isExist = true;
+            }
+            else
+            {
+                location = new tbl_Location();
+            }
+            location.LocationID = LM.LocationID;
+            location.LocationDesc = LM.LocationDesc;
+            location.Address1 = LM.Address1;
+            location.Address2 = LM.Address2;
+            location.Address3 = LM.Address3;
+            location.POBox = LM.POBox;
+            location.Contact = LM.Contact;
+            location.Phone = LM.Phone;
+            location.Fax = LM.Fax;
+            location.Email = LM.Email;
+            location.City = LM.City;
+            location.Region = LM.Region;
+            location.Country = LM.Country;
+            location.FieldArea = LM.FieldArea;
+            location.CashLoan = LM.CashLoan;
+            if (!isExist)
+            {
+
                 return result = this.Insert(location);
             }
             else

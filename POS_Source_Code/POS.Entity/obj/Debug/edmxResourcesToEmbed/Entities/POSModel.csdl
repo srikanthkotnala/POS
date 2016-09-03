@@ -9,6 +9,7 @@
     <NavigationProperty Name="tbl_Category1" Relationship="Self.FK_tbl_Category_tbl_Category" FromRole="tbl_Category" ToRole="tbl_Category1" />
     <NavigationProperty Name="tbl_Category2" Relationship="Self.FK_tbl_Category_tbl_Category" FromRole="tbl_Category1" ToRole="tbl_Category" />
     <NavigationProperty Name="tbl_Material" Relationship="Self.FK_tbl_Material_tbl_Category" FromRole="tbl_Category" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_SubCategory" Relationship="POSModel.FK_tbl_SubCategory_tbl_Category" FromRole="tbl_Category" ToRole="tbl_SubCategory" />
   </EntityType>
   <EntityType Name="tbl_City">
     <Key>
@@ -44,13 +45,6 @@
     <NavigationProperty Name="tbl_City" Relationship="Self.FK_tbl_Company_tbl_City" FromRole="tbl_Company" ToRole="tbl_City" />
     <NavigationProperty Name="tbl_Company1" Relationship="Self.FK_tbl_Company" FromRole="tbl_Company" ToRole="tbl_Company1" />
     <NavigationProperty Name="tbl_Company2" Relationship="Self.FK_tbl_Company" FromRole="tbl_Company1" ToRole="tbl_Company" />
-  </EntityType>
-  <EntityType Name="tbl_Country">
-    <Key>
-      <PropertyRef Name="CountryID" />
-    </Key>
-    <Property Name="CountryID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tbl_Location">
     <Key>
@@ -137,6 +131,8 @@
     <NavigationProperty Name="tbl_Vendor" Relationship="Self.FK_tbl_Material_tbl_Vendor" FromRole="tbl_Material" ToRole="tbl_Vendor" />
     <NavigationProperty Name="tbl_MaterialEAN" Relationship="Self.FK_tbl_MaterialEAN_tbl_Material" FromRole="tbl_Material" ToRole="tbl_MaterialEAN" />
     <NavigationProperty Name="tbl_PriceFile" Relationship="Self.FK_tbl_PriceFile_tbl_Material" FromRole="tbl_Material" ToRole="tbl_PriceFile" />
+    <NavigationProperty Name="tbl_SubCategory" Relationship="POSModel.FK_tbl_Material_tbl_SubCategory" FromRole="tbl_Material" ToRole="tbl_SubCategory" />
+    <NavigationProperty Name="tbl_UOM" Relationship="POSModel.FK_tbl_Material_tbl_UOM" FromRole="tbl_Material" ToRole="tbl_UOM" />
   </EntityType>
   <EntityType Name="tbl_MaterialEAN">
     <Key>
@@ -152,6 +148,8 @@
     <NavigationProperty Name="tbl_MaterialEAN1" Relationship="Self.FK_tbl_MaterialEAN" FromRole="tbl_MaterialEAN" ToRole="tbl_MaterialEAN1" />
     <NavigationProperty Name="tbl_MaterialEAN2" Relationship="Self.FK_tbl_MaterialEAN" FromRole="tbl_MaterialEAN1" ToRole="tbl_MaterialEAN" />
     <NavigationProperty Name="tbl_PriceFile" Relationship="Self.FK_tbl_PriceFile_tbl_MaterialEAN" FromRole="tbl_MaterialEAN" ToRole="tbl_PriceFile" />
+    <NavigationProperty Name="tbl_UOM" Relationship="POSModel.FK_tbl_MaterialEAN_tbl_BaseUOM" FromRole="tbl_MaterialEAN" ToRole="tbl_UOM" />
+    <NavigationProperty Name="tbl_UOM1" Relationship="POSModel.FK_tbl_MaterialEAN_tbl_UOM" FromRole="tbl_MaterialEAN" ToRole="tbl_UOM" />
   </EntityType>
   <EntityType Name="tbl_PriceFile">
     <Key>
@@ -165,13 +163,7 @@
     <NavigationProperty Name="tbl_MaterialEAN" Relationship="Self.FK_tbl_PriceFile_tbl_MaterialEAN" FromRole="tbl_PriceFile" ToRole="tbl_MaterialEAN" />
     <NavigationProperty Name="tbl_PriceFile1" Relationship="Self.FK_tbl_PriceFile" FromRole="tbl_PriceFile" ToRole="tbl_PriceFile1" />
     <NavigationProperty Name="tbl_PriceFile2" Relationship="Self.FK_tbl_PriceFile" FromRole="tbl_PriceFile1" ToRole="tbl_PriceFile" />
-  </EntityType>
-  <EntityType Name="tbl_Region">
-    <Key>
-      <PropertyRef Name="RegionID" />
-    </Key>
-    <Property Name="RegionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_UOM" Relationship="POSModel.FK_tbl_PriceFile_tbl_UOM" FromRole="tbl_PriceFile" ToRole="tbl_UOM" />
   </EntityType>
   <EntityType Name="tbl_Storage">
     <Key>
@@ -479,13 +471,11 @@
     <EntitySet Name="tbl_Category" EntityType="Self.tbl_Category" />
     <EntitySet Name="tbl_City" EntityType="Self.tbl_City" />
     <EntitySet Name="tbl_Company" EntityType="Self.tbl_Company" />
-    <EntitySet Name="tbl_Country" EntityType="Self.tbl_Country" />
     <EntitySet Name="tbl_Location" EntityType="Self.tbl_Location" />
     <EntitySet Name="tbl_LocationPrice" EntityType="Self.tbl_LocationPrice" />
     <EntitySet Name="tbl_Material" EntityType="Self.tbl_Material" />
     <EntitySet Name="tbl_MaterialEAN" EntityType="Self.tbl_MaterialEAN" />
     <EntitySet Name="tbl_PriceFile" EntityType="Self.tbl_PriceFile" />
-    <EntitySet Name="tbl_Region" EntityType="Self.tbl_Region" />
     <EntitySet Name="tbl_Storage" EntityType="Self.tbl_Storage" />
     <EntitySet Name="tbl_Tender" EntityType="Self.tbl_Tender" />
     <EntitySet Name="tbl_Terminal" EntityType="Self.tbl_Terminal" />
@@ -584,6 +574,55 @@
       <Parameter Name="CategoryID" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="Proc_LoadMasterLocation" ReturnType="Collection(POSModel.Proc_LoadMasterLocation_Result)" />
+    <EntitySet Name="tbl_SubCategory" EntityType="POSModel.tbl_SubCategory" />
+    <AssociationSet Name="FK_tbl_SubCategory_tbl_Category" Association="POSModel.FK_tbl_SubCategory_tbl_Category">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_Material_tbl_SubCategory" Association="POSModel.FK_tbl_Material_tbl_SubCategory">
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_SubCategory" Association="POSModel.FK_tbl_SubCategory">
+      <End Role="tbl_SubCategory" EntitySet="tbl_SubCategory" />
+      <End Role="tbl_SubCategory1" EntitySet="tbl_SubCategory" />
+    </AssociationSet>
+    <EntitySet Name="tbl_Material_Temp" EntityType="POSModel.tbl_Material_Temp" />
+    <EntitySet Name="tbl_MaterialEAN_Temp" EntityType="POSModel.tbl_MaterialEAN_Temp" />
+    <EntitySet Name="tbl_PreferUOM" EntityType="POSModel.tbl_PreferUOM" />
+    <EntitySet Name="tbl_PreferUOM_Temp" EntityType="POSModel.tbl_PreferUOM_Temp" />
+    <EntitySet Name="tbl_PriceFile_Temp" EntityType="POSModel.tbl_PriceFile_Temp" />
+    <AssociationSet Name="FK_tbl_PreferUOM" Association="POSModel.FK_tbl_PreferUOM">
+      <End Role="tbl_PreferUOM" EntitySet="tbl_PreferUOM" />
+      <End Role="tbl_PreferUOM1" EntitySet="tbl_PreferUOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PreferUOM_tbl_Material" Association="POSModel.FK_tbl_PreferUOM_tbl_Material">
+      <End Role="tbl_PreferUOM" EntitySet="tbl_PreferUOM" />
+      <End Role="tbl_PreferUOM1" EntitySet="tbl_PreferUOM" />
+    </AssociationSet>
+    <EntitySet Name="tbl_UOM" EntityType="POSModel.tbl_UOM" />
+    <AssociationSet Name="FK_tbl_Material_tbl_UOM" Association="POSModel.FK_tbl_Material_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_Material" EntitySet="tbl_Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_MaterialEAN_tbl_BaseUOM" Association="POSModel.FK_tbl_MaterialEAN_tbl_BaseUOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_MaterialEAN_tbl_UOM" Association="POSModel.FK_tbl_MaterialEAN_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_MaterialEAN" EntitySet="tbl_MaterialEAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PriceFile_tbl_UOM" Association="POSModel.FK_tbl_PriceFile_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_PriceFile" EntitySet="tbl_PriceFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_UOM" Association="POSModel.FK_tbl_UOM">
+      <End Role="tbl_UOM" EntitySet="tbl_UOM" />
+      <End Role="tbl_UOM1" EntitySet="tbl_UOM" />
+    </AssociationSet>
+    <EntitySet Name="tbl_Country" EntityType="POSModel.tbl_Country" />
+    <EntitySet Name="tbl_Region" EntityType="POSModel.tbl_Region" />
   </EntityContainer>
   <ComplexType Name="Proc_GetAllLTerminal_Result">
     <Property Type="String" Name="LocationID" Nullable="false" MaxLength="20" />
@@ -673,4 +712,249 @@
     <Property Type="String" Name="RtnVendor" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="PhyCount" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <EntityType Name="tbl_SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+    </Key>
+    <Property Name="SubCategoryID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryDesc" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Category" Relationship="POSModel.FK_tbl_SubCategory_tbl_Category" FromRole="tbl_SubCategory" ToRole="tbl_Category" />
+    <NavigationProperty Name="tbl_Material" Relationship="POSModel.FK_tbl_Material_tbl_SubCategory" FromRole="tbl_SubCategory" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_SubCategory1" Relationship="POSModel.FK_tbl_SubCategory" FromRole="tbl_SubCategory" ToRole="tbl_SubCategory1" />
+    <NavigationProperty Name="tbl_SubCategory2" Relationship="POSModel.FK_tbl_SubCategory" FromRole="tbl_SubCategory1" ToRole="tbl_SubCategory" />
+  </EntityType>
+  <Association Name="FK_tbl_SubCategory_tbl_Category">
+    <End Type="POSModel.tbl_Category" Role="tbl_Category" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_SubCategory" Role="tbl_SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SubCategory">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_Material_tbl_SubCategory">
+    <End Type="POSModel.tbl_SubCategory" Role="tbl_SubCategory" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_Material" Role="tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_SubCategory">
+    <End Type="POSModel.tbl_SubCategory" Role="tbl_SubCategory" Multiplicity="1" />
+    <End Type="POSModel.tbl_SubCategory" Role="tbl_SubCategory1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="tbl_SubCategory1">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_Material_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialDesc1" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialDesc2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialDesc3" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="ProductURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BaseUOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="VendorID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustInt1" Type="Int32" />
+    <Property Name="CustInt2" Type="Int32" />
+    <Property Name="CustInt3" Type="Int32" />
+    <Property Name="CustDate1" Type="DateTime" Precision="3" />
+    <Property Name="CustDate2" Type="DateTime" Precision="3" />
+    <Property Name="CustDate3" Type="DateTime" Precision="3" />
+    <Property Name="CustText1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustText2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustText3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddDate" Type="DateTime" Precision="0" />
+    <Property Name="UpdDate" Type="DateTime" Precision="0" />
+    <Property Name="TerminalID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_MaterialEAN_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EAN13" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ConvertValue" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="BaseUOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialMix" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TerminalID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_PreferUOM">
+    <Key>
+      <PropertyRef Name="MaterialID" />
+    </Key>
+    <Property Name="MaterialID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EAN13" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Conv" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="TerminalID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_PreferUOM1" Relationship="POSModel.FK_tbl_PreferUOM" FromRole="tbl_PreferUOM" ToRole="tbl_PreferUOM1" />
+    <NavigationProperty Name="tbl_PreferUOM2" Relationship="POSModel.FK_tbl_PreferUOM" FromRole="tbl_PreferUOM1" ToRole="tbl_PreferUOM" />
+    <NavigationProperty Name="tbl_PreferUOM11" Relationship="POSModel.FK_tbl_PreferUOM_tbl_Material" FromRole="tbl_PreferUOM" ToRole="tbl_PreferUOM1" />
+    <NavigationProperty Name="tbl_PreferUOM3" Relationship="POSModel.FK_tbl_PreferUOM_tbl_Material" FromRole="tbl_PreferUOM1" ToRole="tbl_PreferUOM" />
+  </EntityType>
+  <EntityType Name="tbl_PreferUOM_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="MaterialID" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EAN13" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Conv" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="TerminalID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_PriceFile_Temp">
+    <Key>
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="EAN13" />
+      <PropertyRef Name="TerminalID" />
+    </Key>
+    <Property Name="LocationID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EAN13" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="5" />
+    <Property Name="TerminalID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_tbl_PreferUOM">
+    <End Type="POSModel.tbl_PreferUOM" Role="tbl_PreferUOM" Multiplicity="1" />
+    <End Type="POSModel.tbl_PreferUOM" Role="tbl_PreferUOM1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PreferUOM">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PreferUOM1">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PreferUOM_tbl_Material">
+    <End Type="POSModel.tbl_PreferUOM" Role="tbl_PreferUOM" Multiplicity="1" />
+    <End Type="POSModel.tbl_PreferUOM" Role="tbl_PreferUOM1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_PreferUOM">
+        <PropertyRef Name="MaterialID" />
+      </Principal>
+      <Dependent Role="tbl_PreferUOM1">
+        <PropertyRef Name="MaterialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_UOM">
+    <Key>
+      <PropertyRef Name="UOM" />
+    </Key>
+    <Property Name="UOM" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UOMDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_Material" Relationship="POSModel.FK_tbl_Material_tbl_UOM" FromRole="tbl_UOM" ToRole="tbl_Material" />
+    <NavigationProperty Name="tbl_MaterialEAN" Relationship="POSModel.FK_tbl_MaterialEAN_tbl_BaseUOM" FromRole="tbl_UOM" ToRole="tbl_MaterialEAN" />
+    <NavigationProperty Name="tbl_MaterialEAN1" Relationship="POSModel.FK_tbl_MaterialEAN_tbl_UOM" FromRole="tbl_UOM" ToRole="tbl_MaterialEAN" />
+    <NavigationProperty Name="tbl_PriceFile" Relationship="POSModel.FK_tbl_PriceFile_tbl_UOM" FromRole="tbl_UOM" ToRole="tbl_PriceFile" />
+    <NavigationProperty Name="tbl_UOM1" Relationship="POSModel.FK_tbl_UOM" FromRole="tbl_UOM" ToRole="tbl_UOM1" />
+    <NavigationProperty Name="tbl_UOM2" Relationship="POSModel.FK_tbl_UOM" FromRole="tbl_UOM1" ToRole="tbl_UOM" />
+  </EntityType>
+  <Association Name="FK_tbl_Material_tbl_UOM">
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_Material" Role="tbl_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_Material">
+        <PropertyRef Name="BaseUOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_MaterialEAN_tbl_BaseUOM">
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_MaterialEAN" Role="tbl_MaterialEAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="BaseUOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_MaterialEAN_tbl_UOM">
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_MaterialEAN" Role="tbl_MaterialEAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_MaterialEAN">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_PriceFile_tbl_UOM">
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM" Multiplicity="0..1" />
+    <End Type="POSModel.tbl_PriceFile" Role="tbl_PriceFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_PriceFile">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbl_UOM">
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM" Multiplicity="1" />
+    <End Type="POSModel.tbl_UOM" Role="tbl_UOM1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_UOM">
+        <PropertyRef Name="UOM" />
+      </Principal>
+      <Dependent Role="tbl_UOM1">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

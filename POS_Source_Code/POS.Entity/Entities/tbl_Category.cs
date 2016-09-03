@@ -18,6 +18,7 @@ namespace POS.Entity.Entities
         public tbl_Category()
         {
             this.tbl_Material = new HashSet<tbl_Material>();
+            this.tbl_SubCategory = new HashSet<tbl_SubCategory>();
         }
     
         public string CategoryID { get; set; }
@@ -27,5 +28,7 @@ namespace POS.Entity.Entities
         public virtual tbl_Category tbl_Category2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Material> tbl_Material { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_SubCategory> tbl_SubCategory { get; set; }
     }
 }

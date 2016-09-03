@@ -36,7 +36,13 @@ namespace POS.Web.Controllers
         public PartialViewResult GetLocationByID(string locationID)
         {
             LocationModel LM = new LocationModel();
-            tbl_Location location = LocationBL.GetByID(locationID.Trim());
+            tbl_Location location;
+            location=LocationBL.GetByID(locationID.Trim());
+
+            if(location==null)
+            {
+                location = new tbl_Location();
+            }
             LM.LocationID = location.LocationID;
             LM.LocationDesc = location.LocationDesc;
             LM.Address1 = location.Address1;
@@ -73,10 +79,9 @@ namespace POS.Web.Controllers
             location.City = LM.City;
             location.Region = LM.Region;
             location.Country = LM.Country;
-            location.BusinessArea = LM.BusinessArea;
             location.FieldArea = LM.FieldArea;
             location.CashLoan = LM.CashLoan;
-            return LocationBL.InsertOrUpdate(location);
+            return LocationBL.InsertOrUpdate(LM);
         }
     }
 }

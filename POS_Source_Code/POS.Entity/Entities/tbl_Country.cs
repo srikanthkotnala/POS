@@ -14,7 +14,7 @@ namespace POS.Entity.Entities
     
     public partial class tbl_Country
     {
-        public string CountryID { get; set; }
+        public int CountryID { get; set; }
         public string CountryName { get; set; }
     }
 }

@@ -53,8 +53,21 @@ namespace POS.Web.Controllers
         }
         public PartialViewResult GetStorageId(string locationID)
         {
-           List<tbl_Storage> locationId = StorageBL.GetByID(locationID.Trim());
-            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", locationId);
+            List<tbl_Storage> locationId = StorageBL.GetByID(locationID.Trim()).ToList();
+            bool IsExsit = false;
+            if (locationId == null || locationId.Count == 0)
+            {
+                locationId = new List<tbl_Storage>();
+                IsExsit = true;
+            }
+            LocationStorageModel LSM = new LocationStorageModel();
+            if (!IsExsit)
+            {
+                LSM.LocationID = locationId[0].ToString();
+                LSM.LocationDesc = locationId[1].ToString();
+                LSM.StorageID = locationId[2].ToString();
+            }
+            return PartialView("~/Views/Storage/Partial/_StorageDetailsPartial.cshtml", LSM);
         }
     }
 }
